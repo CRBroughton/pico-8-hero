@@ -1,0 +1,19 @@
+{
+  "name": "pico-8-hero",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "commit": "cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "3.3.0"
+  }
+}
