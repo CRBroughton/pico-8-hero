@@ -4,6 +4,7 @@ function _init()
 end
 
 function _draw()
+    cls(0)
     spr(1, 64, 64)
 end
 
