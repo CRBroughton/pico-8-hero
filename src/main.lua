@@ -51,7 +51,7 @@ function _update()
     -- Moves the ship
     ship.x = ship.x + ship.hspeed
     ship.y = ship.y + ship.vspeed
-    bullet.y = bullet.y-2
+    bullet.y = bullet.y - 2
 
     -- Edge of screen checking
     if ship.x > 120 then
