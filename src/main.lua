@@ -18,6 +18,7 @@ function _init()
     starx = {}
     stary = {}
 
+    -- Add stars into the empty arrays
     for i = 1, 100 do
         add(starx, flr(rnd(128)))
         add(stary, flr(rnd(128)))
