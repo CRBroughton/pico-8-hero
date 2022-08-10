@@ -11,50 +11,50 @@ end
 
 function _draw()
     cls(0)
-    spr(1, ship['x'], ship['y'])
+    spr(1, ship.x, ship.y)
 end
 
 function _update()
-    ship['hspeed'] = 0
-    ship['vspeed'] = 0
+    ship.hspeed = 0
+    ship.vspeed = 0
 
     -- Controls
     if btn(0) then
-        ship['hspeed'] = -2
+        ship.hspeed = -2
     end
 
     if btn(1) then
-         ship['hspeed'] = 2
+         ship.hspeed = 2
     end
 
     if btn(3) then
-         ship['vspeed'] = 2
+         ship.vspeed = 2
     end
 
     if btn(2) then
-         ship['vspeed'] = -2
+         ship.vspeed = -2
     end
 
     -- Moves the ship
-    ship['x'] = ship['x'] + ship['hspeed']
-    ship['y'] = ship['y'] + ship['vspeed']
+    ship.x = ship.x + ship.hspeed
+    ship.y = ship.y + ship.vspeed
 
 
     -- Edge of screen checking
-    if ship['x'] > 120 then
-        ship['x'] = 0
+    if ship.x > 120 then
+        ship.x = 0
     end
 
-    if ship['x'] < 0 then
-        ship['x'] = 120
+    if ship.x < 0 then
+        ship.x = 120
     end
 
-    if ship['y'] < 0 then
-        ship['y'] = 0
+    if ship.y < 0 then
+        ship.y = 0
     end
 
-    if ship['y'] > 120 then
-        ship['y'] = 120
+    if ship.y > 120 then
+        ship.y = 120
     end
 
 end
