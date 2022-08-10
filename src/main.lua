@@ -11,6 +11,8 @@ function _init()
         muzzle = 0
     }
 
+    score = 30000
+
     bullet = {
         x = -64,
         y = -40,
@@ -27,6 +29,7 @@ function _draw()
     if ship.muzzle > 0 then
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
+    print("score: " .. score, 40, 1, 12)
 end
 
 function _update()
