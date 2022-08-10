@@ -17,11 +17,13 @@ function _init()
 
     starx = {}
     stary = {}
+    starspeed = {}
 
     -- Add stars into the empty arrays
     for i = 1, 100 do
         add(starx, flr(rnd(128)))
         add(stary, flr(rnd(128)))
+        add(starspeed, rnd(1.5) + 0.5)
     end
 
     bullet = {
@@ -118,5 +120,6 @@ function _update()
         ship.y = 120
     end
 
+    animatestars()
 end
 
