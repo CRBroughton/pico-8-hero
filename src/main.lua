@@ -15,6 +15,14 @@ function _init()
 
     score = 30000
 
+    starx = {}
+    stary = {}
+
+    for i = 1, 100 do
+        add(starx, flr(rnd(128)))
+        add(stary, flr(rnd(128)))
+    end
+
     bullet = {
         x = -64,
         y = -40,
@@ -24,6 +32,7 @@ end
 
 function _draw()
     cls(0)
+    starfield()
     spr(ship.sprite, ship.x, ship.y)
     spr(ship.flame, ship.x, ship.y + 8)
     spr(16, bullet.x, bullet.y)
