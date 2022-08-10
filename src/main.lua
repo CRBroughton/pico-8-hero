@@ -9,8 +9,8 @@ function _init()
     }
 
     bullet = {
-        x = 64,
-        y = 40,
+        x = -64,
+        y = -40,
     }
 
 end
@@ -18,7 +18,7 @@ end
 function _draw()
     cls(0)
     spr(1, ship.x, ship.y)
-    spr(2, bullet.x, bullet.y)
+    spr(16, bullet.x, bullet.y)
 end
 
 function _update()
