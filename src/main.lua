@@ -8,6 +8,7 @@ function _init()
         hspeed = 1,
         sprite = 2,
         flame = 5,
+        muzzle = 0
     }
 
     bullet = {
@@ -22,6 +23,10 @@ function _draw()
     spr(ship.sprite, ship.x, ship.y)
     spr(ship.flame, ship.x, ship.y + 8)
     spr(16, bullet.x, bullet.y)
+
+    if ship.muzzle > 0 then
+        circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
+    end
 end
 
 function _update()
@@ -52,6 +57,7 @@ function _update()
         bullet.y = ship.y - 3
         bullet.x = ship.x
         sfx(0)
+        ship.muzzle = 4
     end
 
     -- Moves the ship
@@ -65,6 +71,11 @@ function _update()
     ship.flame = ship.flame + 1
     if ship.flame > 9 then
         ship.flame = 5
+    end
+
+    -- Animates the muzzle flash
+    if ship.muzzle > 0 then
+        ship.muzzle = ship.muzzle - 1
     end
 
     -- Edge of screen checking
