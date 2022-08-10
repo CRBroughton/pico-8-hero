@@ -7,6 +7,7 @@ function _init()
         vspeed = 1,
         hspeed = 1,
         sprite = 2,
+        flame = 5,
     }
 
     bullet = {
@@ -19,6 +20,7 @@ end
 function _draw()
     cls(0)
     spr(ship.sprite, ship.x, ship.y)
+    spr(ship.flame, ship.x, ship.y + 8)
     spr(16, bullet.x, bullet.y)
 end
 
@@ -55,7 +57,15 @@ function _update()
     -- Moves the ship
     ship.x = ship.x + ship.hspeed
     ship.y = ship.y + ship.vspeed
+
+    -- Animates the bullet
     bullet.y = bullet.y - 2
+
+    -- Animates the ships flame
+    ship.flame = ship.flame + 1
+    if ship.flame > 9 then
+        ship.flame = 5
+    end
 
     -- Edge of screen checking
     if ship.x > 120 then
