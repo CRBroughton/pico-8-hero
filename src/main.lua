@@ -6,6 +6,7 @@ function _init()
         y = 60,
         vspeed = 1,
         hspeed = 1,
+        sprite = 2,
     }
 
     bullet = {
@@ -17,21 +18,24 @@ end
 
 function _draw()
     cls(0)
-    spr(1, ship.x, ship.y)
+    spr(ship.sprite, ship.x, ship.y)
     spr(16, bullet.x, bullet.y)
 end
 
 function _update()
     ship.hspeed = 0
     ship.vspeed = 0
+    ship.sprite = 2
 
     -- Controls
     if btn(0) then
         ship.hspeed = -2
+        ship.sprite = 1
     end
 
     if btn(1) then
          ship.hspeed = 2
+         ship.sprite = 3
     end
 
     if btn(3) then
