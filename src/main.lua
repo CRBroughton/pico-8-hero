@@ -45,6 +45,7 @@ function _update()
     if btnp(5) then
         bullet.y = ship.y - 3
         bullet.x = ship.x
+        sfx(0)
     end
 
     -- Moves the ship
