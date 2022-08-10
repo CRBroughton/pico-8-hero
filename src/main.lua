@@ -2,6 +2,8 @@ function _init()
     -- Clears the screen
     cls(0)
     ship = {
+        lives = 3,
+        max_lives = 4,
         x = 60,
         y = 60,
         vspeed = 1,
@@ -30,6 +32,14 @@ function _draw()
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
     print("score: " .. score, 40, 1, 12)
+    
+    for i = 1, ship.max_lives do
+        if ship.lives >= i  then
+            spr(13, i * 9 - 8, 1)
+        else
+            spr(14, i * 9 - 8, 1)
+        end
+    end
 end
 
 function _update()
