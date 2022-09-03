@@ -64,9 +64,5 @@ function startgame()
 
     enemies = {}
 
-    local enemy = {}
-    enemy.x = 60
-    enemy.y = 5
-    enemy.sprite = 21
-    add(enemies, enemy)
+    spawnenemy()
 end

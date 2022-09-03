@@ -20,3 +20,13 @@ function iscolliding(spritea, spriteb)
 
     return true
 end
+
+function spawnenemy()
+    local enemy = {
+        x = rnd(120),
+        y = -8,
+        sprite = 21,
+    }
+
+    add(enemies, enemy)
+end

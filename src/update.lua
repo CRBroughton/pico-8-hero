@@ -51,6 +51,7 @@ function update_game()
                 del (enemies, enemy)
                 del (bullets, bullet)
                 sfx(2)
+                spawnenemy()
             end
         end
     end
