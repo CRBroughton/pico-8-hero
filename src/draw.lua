@@ -4,8 +4,13 @@ function draw_game()
     spr(ship.sprite, ship.x, ship.y)
     spr(ship.flame, ship.x, ship.y + 8)
 
-    -- Draws bullets
+    -- draw enemies
+    for i = 1, #enemies do
+        local enemy = enemies[i]
+        spr(enemy.sprite, enemy.x, enemy.y)
+    end
 
+    -- Draws bullets
     for i = 1, #bullets do
         local bullet = bullets[i]
         spr(16, bullet.x, bullet.y)
