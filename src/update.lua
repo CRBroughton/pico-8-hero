@@ -23,18 +23,25 @@ function update_game()
     end
 
     if btnp(5) then
-        bullet.y = ship.y - 3
+        local bullet = {}
         bullet.x = ship.x
+        bullet.y = ship.y - 3
+
+        add(bullets, bullet)
+
         sfx(0)
         ship.muzzle = 4
+    end
+
+    -- Animates the bullet
+    for i = 1, #bullets do
+        local bullet = bullets[i]
+        bullet.y = bullet.y - 2
     end
 
     -- Moves the ship
     ship.x = ship.x + ship.hspeed
     ship.y = ship.y + ship.vspeed
-
-    -- Animates the bullet
-    bullet.y = bullet.y - 2
 
     -- Animates the ships flame
     ship.flame = ship.flame + 1

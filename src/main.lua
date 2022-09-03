@@ -59,4 +59,6 @@ function startgame()
         newstar.speed =  rnd(1.5) + 0.5
         add(stars, newstar)
     end
+
+    bullets = {}
 end
