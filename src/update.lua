@@ -66,3 +66,9 @@ function update_game()
 
     animatestars()
 end
+
+function update_start()
+    if btnp(4) then
+        startgame()
+    end
+end
