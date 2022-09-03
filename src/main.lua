@@ -27,7 +27,7 @@ function _init()
     end
 
     -- state machine for game mode
-    mode="game"
+    mode = "game"
 
     bullet = {
         x = -64,
@@ -37,27 +37,18 @@ function _init()
 end
 
 function _draw()
-    cls(0)
-    starfield()
-    spr(ship.sprite, ship.x, ship.y)
-    spr(ship.flame, ship.x, ship.y + 8)
-    spr(16, bullet.x, bullet.y)
-
-    if ship.muzzle > 0 then
-        circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
-    end
-    print("score: " .. score, 40, 1, 12)
-    
-    for i = 1, ship.max_lives do
-        if ship.lives >= i  then
-            spr(13, i * 9 - 8, 1)
-        else
-            spr(14, i * 9 - 8, 1)
-        end
+    if mode == "game" then
+        draw_game()
+    elseif mode == "start" then
+        -- start screen
     end
 end
 
 function _update()
-    update_game()
+    if mode == "game" then
+        update_game()
+    elseif mode == "start" then
+        -- start screen
+    end
 end
 
