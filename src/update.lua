@@ -44,10 +44,8 @@ function update_game()
     end
 
     -- Animates the enemies
-    for i = 1, #enemies do
-        local enemy = enemies[i]
+    for enemy in all(enemies) do
         enemy.y += 1
-
         enemy.sprite += 0.5
         if enemy.sprite >= 25 then
             enemy.sprite = 21
