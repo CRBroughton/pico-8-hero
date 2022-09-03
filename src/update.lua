@@ -66,6 +66,7 @@ function update_game()
 
         if enemy.y > 128 then
             del(enemies, enemy)
+            spawnenemy()
         end
     end
 
@@ -91,12 +92,16 @@ function update_game()
     end
 
     -- checks if an enemy is colliding with player
-    for enemy in all(enemies) do
-        if iscolliding(enemy, ship) then
-            ship.lives -= 1
-            sfx(1)
-            del(enemies, enemy)
+    if ship.invul <= 0 then
+        for enemy in all(enemies) do
+            if iscolliding(enemy, ship) then
+                ship.lives -= 1
+                sfx(1)
+                ship.invul = 30
+            end
         end
+    else 
+        ship.invul -= 1
     end
 
     -- checks if the player is out of lives

@@ -1,8 +1,17 @@
 function draw_game()
     cls(0)
     starfield()
-    drawsprite(ship)
-    spr(ship.flame, ship.x, ship.y + 8)
+    --invul state for player
+    if ship.invul <= 0 then
+        drawsprite(ship)
+        spr(ship.flame, ship.x, ship.y + 8)
+    else 
+        -- Flashes the playes ship if collision
+        if sin(time / 10) < 0 then
+            drawsprite(ship)
+            spr(ship.flame, ship.x, ship.y + 8)
+        end
+    end
 
     -- draw enemies
     for enemy in all(enemies) do
