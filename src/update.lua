@@ -50,6 +50,10 @@ function update_game()
         if enemy.sprite >= 25 then
             enemy.sprite = 21
         end
+
+        if enemy.y > 128 then
+            del(enemies, enemy)
+        end
     end
 
     -- Moves the ship
