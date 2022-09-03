@@ -72,3 +72,9 @@ function update_start()
         startgame()
     end
 end
+
+function update_over() 
+    if btnp(4) or btnp(5) then
+        mode = "start"
+    end
+end
