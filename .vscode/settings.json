@@ -3,6 +3,7 @@
         "update",
         "start",
         "starfield",
-        "enemies"
+        "enemies",
+        "player"
     ]
 }

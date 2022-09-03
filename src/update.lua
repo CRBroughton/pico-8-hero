@@ -22,18 +22,22 @@ function update_game()
          ship.vspeed = -2
     end
 
-    if btnp(5) then
-        local bullet = {
-            x = ship.x,
-            y = ship.y - 3,
-            sprite = 16,
-        }
+    if btn(5) then
+        if bullettime <= 0 then
+            local bullet = {
+                x = ship.x,
+                y = ship.y - 3,
+                sprite = 16,
+            }
 
-        add(bullets, bullet)
+            add(bullets, bullet)
 
-        sfx(0)
-        ship.muzzle = 4
+            sfx(0)
+            ship.muzzle = 6
+            bullettime = 3
+        end
     end
+    bullettime -= 1
 
     -- Animates the bullet
     for bullet in all(bullets) do
@@ -41,6 +45,19 @@ function update_game()
 
         if bullet.y < -8 then
             del(bullets, bullet)
+        end
+    end
+
+    -- bullet collision
+    for enemy in all(enemies) do
+        for bullet in all(bullets) do
+            if iscolliding(enemy, bullet) then
+                del (enemies, enemy)
+                del (bullets, bullet)
+                sfx(2)
+                score += 1
+                spawnenemy()
+            end
         end
     end
 
@@ -54,6 +71,7 @@ function update_game()
 
         if enemy.y > 128 then
             del(enemies, enemy)
+            spawnenemy()
         end
     end
 
@@ -79,12 +97,16 @@ function update_game()
     end
 
     -- checks if an enemy is colliding with player
-    for enemy in all(enemies) do
-        if iscolliding(enemy, ship) then
-            ship.lives -= 1
-            sfx(1)
-            del(enemies, enemy)
+    if ship.invul <= 0 then
+        for enemy in all(enemies) do
+            if iscolliding(enemy, ship) then
+                ship.lives -= 1
+                sfx(1)
+                ship.invul = 30
+            end
         end
+    else 
+        ship.invul -= 1
     end
 
     -- checks if the player is out of lives
