@@ -1,7 +1,6 @@
 -- Draws the starfield to the screen
 function starfield()
-    for i = 1, #stars do
-        local star = stars[i]
+    for star in all(stars) do
         local starcolour = 6
 
         if star.speed < 1.5 then
@@ -14,9 +13,8 @@ function starfield()
 end
 
 function animatestars()
-    for i = 1, #stars do
-        local star = stars[i]
-        star.y = star.y + star.speed
+    for star in all(stars) do
+        star.y += star.speed
         if star.y > 128 then
             star.y = star.y - 128
         end

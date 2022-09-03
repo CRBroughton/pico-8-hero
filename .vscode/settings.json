@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "update",
         "start",
-        "starfield"
+        "starfield",
+        "enemies"
     ]
 }

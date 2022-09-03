@@ -61,4 +61,12 @@ function startgame()
     end
 
     bullets = {}
+
+    enemies = {}
+
+    local enemy = {}
+    enemy.x = 60
+    enemy.y = 5
+    enemy.sprite = 21
+    add(enemies, enemy)
 end
