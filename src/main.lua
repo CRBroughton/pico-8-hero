@@ -4,6 +4,7 @@ function _init()
     -- state machine for game mode
     mode = "start"
     blinkt = 1
+    time = 0
 
 end
 
@@ -18,6 +19,7 @@ function _draw()
 end
 
 function _update()
+    time += 1
     blinkt += 1
     if mode == "game" then
         update_game()
@@ -30,8 +32,10 @@ end
 
 function startgame() 
     mode = "game"
+    time = 0
     ship = {
-        lives = 3,
+        lives = 4,
+        invul = 0,
         max_lives = 4,
         x = 60,
         y = 60,
@@ -42,12 +46,7 @@ function startgame()
         muzzle = 0
     }
 
-    bullet = {
-        x = -64,
-        y = -40,
-    }
-
-    score = 30000
+    score = 0
 
     stars = {}
 
@@ -60,13 +59,10 @@ function startgame()
         add(stars, newstar)
     end
 
+    bullettime = 0
     bullets = {}
 
     enemies = {}
 
-    local enemy = {}
-    enemy.x = 60
-    enemy.y = 5
-    enemy.sprite = 21
-    add(enemies, enemy)
+    spawnenemy()
 end
