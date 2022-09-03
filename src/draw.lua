@@ -1,19 +1,17 @@
 function draw_game()
     cls(0)
     starfield()
-    spr(ship.sprite, ship.x, ship.y)
+    drawsprite(ship)
     spr(ship.flame, ship.x, ship.y + 8)
 
     -- draw enemies
-    for i = 1, #enemies do
-        local enemy = enemies[i]
-        spr(enemy.sprite, enemy.x, enemy.y)
+    for enemy in all(enemies) do
+        drawsprite(enemy)
     end
 
     -- Draws bullets
-    for i = 1, #bullets do
-        local bullet = bullets[i]
-        spr(16, bullet.x, bullet.y)
+    for bullet in all(bullets) do
+        drawsprite(bullet)
     end
 
     if ship.muzzle > 0 then

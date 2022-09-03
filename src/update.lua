@@ -23,9 +23,11 @@ function update_game()
     end
 
     if btnp(5) then
-        local bullet = {}
-        bullet.x = ship.x
-        bullet.y = ship.y - 3
+        local bullet = {
+            x = ship.x,
+            y = ship.y - 3,
+            sprite = 16,
+        }
 
         add(bullets, bullet)
 
@@ -34,9 +36,8 @@ function update_game()
     end
 
     -- Animates the bullet
-    for i = #bullets, 1, -1 do
-        local bullet = bullets[i]
-        bullet.y = bullet.y - 2
+    for bullet in all(bullets) do
+        bullet.y -= 2
 
         if bullet.y < -8 then
             del(bullets, bullet)
@@ -57,8 +58,8 @@ function update_game()
     end
 
     -- Moves the ship
-    ship.x = ship.x + ship.hspeed
-    ship.y = ship.y + ship.vspeed
+    ship.x += ship.hspeed
+    ship.y += ship.vspeed
 
     -- Animates the ships flame
     ship.flame = ship.flame + 1
@@ -68,7 +69,7 @@ function update_game()
 
     -- Animates the muzzle flash
     if ship.muzzle > 0 then
-        ship.muzzle = ship.muzzle - 1
+        ship.muzzle -= 1
     end
 
     -- Edge of screen checking
