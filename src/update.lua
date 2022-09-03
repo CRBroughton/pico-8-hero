@@ -34,9 +34,13 @@ function update_game()
     end
 
     -- Animates the bullet
-    for i = 1, #bullets do
+    for i = #bullets, 1, -1 do
         local bullet = bullets[i]
         bullet.y = bullet.y - 2
+
+        if bullet.y < -8 then
+            del(bullets, bullet)
+        end
     end
 
     -- Moves the ship
