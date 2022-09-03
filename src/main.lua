@@ -49,14 +49,16 @@ function startgame()
 
     score = 30000
 
-    starx = {}
-    stary = {}
-    starspeed = {}
+    stars = {}
 
-    -- Add stars into the empty arrays
+    -- Add stars into the stars arrays
     for i = 1, 100 do
-        add(starx, flr(rnd(128)))
-        add(stary, flr(rnd(128)))
-        add(starspeed, rnd(1.5) + 0.5)
+        local newstar = {}
+        newstar.x = flr(rnd(128))
+        newstar.y = flr(rnd(128))
+        newstar.speed =  rnd(1.5) + 0.5
+        add(stars, newstar)
     end
+
+    bullets = {}
 end

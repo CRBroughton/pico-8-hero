@@ -3,7 +3,13 @@ function draw_game()
     starfield()
     spr(ship.sprite, ship.x, ship.y)
     spr(ship.flame, ship.x, ship.y + 8)
-    spr(16, bullet.x, bullet.y)
+
+    -- Draws bullets
+
+    for i = 1, #bullets do
+        local bullet = bullets[i]
+        spr(16, bullet.x, bullet.y)
+    end
 
     if ship.muzzle > 0 then
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
