@@ -1,26 +1,24 @@
 -- Draws the starfield to the screen
 function starfield()
-    for i = 1, #starx do
-    local starcolour = 6
+    for i = 1, #stars do
+        local star = stars[i]
+        local starcolour = 6
 
-    if starspeed[i] < 1.5 then
-        starcolour = 13
-    elseif starspeed[i] < 1 then
-        starcolour = 1
-    end
-        pset(starx[i], stary[i], starcolour)
+        if star.speed < 1.5 then
+            starcolour = 13
+        elseif star.speed < 1 then
+            starcolour = 1
+        end
+            pset(star.x, star.y, starcolour)
     end
 end
 
 function animatestars()
-    for i = 1, #stary do -- # - shortcut to length
-        local sy = stary[i] -- local scope variable
-
-        sy = sy + starspeed[i]
-
-        if sy > 128 then
-            sy = sy - 128
+    for i = 1, #stars do
+        local star = stars[i]
+        star.y = star.y + star.speed
+        if star.y > 128 then
+            star.y = star.y - 128
         end
-        stary[i] = sy -- sets global variable value to local
     end
 end
