@@ -22,5 +22,5 @@ end
 function draw_start()
     cls(1)
     print("my awesome shmup", 32, 40, 12)
-    print("press any key to start", 20, 80, 7)
+    print("press either z or x key to start", 0, 80, 7)
 end

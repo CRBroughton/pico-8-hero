@@ -68,7 +68,7 @@ function update_game()
 end
 
 function update_start()
-    if btnp(4) then
+    if btnp(4) or btnp(5) then
         startgame()
     end
 end
