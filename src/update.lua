@@ -44,6 +44,17 @@ function update_game()
         end
     end
 
+    -- bullet collision
+    for enemy in all(enemies) do
+        for bullet in all(bullets) do
+            if iscolliding(enemy, bullet) then
+                del (enemies, enemy)
+                del (bullets, bullet)
+                sfx(2)
+            end
+        end
+    end
+
     -- Animates the enemies
     for enemy in all(enemies) do
         enemy.y += 1
