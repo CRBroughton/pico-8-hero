@@ -34,7 +34,7 @@ function startgame()
     mode = "game"
     time = 0
     ship = {
-        lives = 3,
+        lives = 4,
         invul = 0,
         max_lives = 4,
         x = 60,
@@ -46,12 +46,7 @@ function startgame()
         muzzle = 0
     }
 
-    bullet = {
-        x = -64,
-        y = -40,
-    }
-
-    score = 30000
+    score = 0
 
     stars = {}
 
@@ -64,6 +59,7 @@ function startgame()
         add(stars, newstar)
     end
 
+    bullettime = 0
     bullets = {}
 
     enemies = {}

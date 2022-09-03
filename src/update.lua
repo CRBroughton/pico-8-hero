@@ -22,18 +22,22 @@ function update_game()
          ship.vspeed = -2
     end
 
-    if btnp(5) then
-        local bullet = {
-            x = ship.x,
-            y = ship.y - 3,
-            sprite = 16,
-        }
+    if btn(5) then
+        if bullettime <= 0 then
+            local bullet = {
+                x = ship.x,
+                y = ship.y - 3,
+                sprite = 16,
+            }
 
-        add(bullets, bullet)
+            add(bullets, bullet)
 
-        sfx(0)
-        ship.muzzle = 4
+            sfx(0)
+            ship.muzzle = 6
+            bullettime = 3
+        end
     end
+    bullettime -= 1
 
     -- Animates the bullet
     for bullet in all(bullets) do
@@ -51,6 +55,7 @@ function update_game()
                 del (enemies, enemy)
                 del (bullets, bullet)
                 sfx(2)
+                score += 1
                 spawnenemy()
             end
         end
