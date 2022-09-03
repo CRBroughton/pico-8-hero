@@ -61,17 +61,6 @@ function update_game()
     ship.x += ship.hspeed
     ship.y += ship.vspeed
 
-    -- Animates the ships flame
-    ship.flame = ship.flame + 1
-    if ship.flame > 9 then
-        ship.flame = 5
-    end
-
-    -- Animates the muzzle flash
-    if ship.muzzle > 0 then
-        ship.muzzle -= 1
-    end
-
     -- Edge of screen checking
     if ship.x > 120 then
         ship.x = 0
@@ -87,6 +76,32 @@ function update_game()
 
     if ship.y > 120 then
         ship.y = 120
+    end
+
+    -- checks if an enemy is colliding with player
+    for enemy in all(enemies) do
+        if iscolliding(enemy, ship) then
+            ship.lives -= 1
+            sfx(1)
+            del(enemies, enemy)
+        end
+    end
+
+    -- checks if the player is out of lives
+    if ship.lives <= 0 then
+        mode = "over"
+        return
+    end
+
+    -- Animates the ships flame
+    ship.flame = ship.flame + 1
+    if ship.flame > 9 then
+        ship.flame = 5
+    end
+
+    -- Animates the muzzle flash
+    if ship.muzzle > 0 then
+        ship.muzzle -= 1
     end
 
     animatestars()
