@@ -3,6 +3,7 @@ function _init()
     cls(0)
     -- state machine for game mode
     mode = "start"
+    blinkt = 1
 
 end
 
@@ -17,6 +18,7 @@ function _draw()
 end
 
 function _update()
+    blinkt += 1
     if mode == "game" then
         update_game()
     elseif mode == "start" then

@@ -22,13 +22,13 @@ end
 function draw_start()
     cls(1)
     print("my awesome shmup", 32, 40, 12)
-    print("press either z or x key to start", 0, 80, 7)
+    print("press either z or x key to start", 0, 80, blink())
 end
 
 function draw_over()
     cls(8)
     print("game over", 50, 40, 2)
-    print("press either z or x key", 20, 80, 7)
+    print("press either z or x key", 20, 80, blink())
     print("to continue", 45, 90, 7)
 
 end
