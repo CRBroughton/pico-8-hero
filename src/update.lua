@@ -52,11 +52,16 @@ function update_game()
     for enemy in all(enemies) do
         for bullet in all(bullets) do
             if iscolliding(enemy, bullet) then
-                del (enemies, enemy)
                 del (bullets, bullet)
-                sfx(2)
-                score += 1
-                spawnenemy()
+                enemy.hp -= 1
+                sfx(3)
+                enemy.flash = 2
+                if enemy.hp <= 0 then
+                    del (enemies, enemy)
+                    sfx(2)
+                    score += 1
+                    spawnenemy()
+                end
             end
         end
     end

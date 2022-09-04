@@ -15,7 +15,16 @@ function draw_game()
 
     -- draw enemies
     for enemy in all(enemies) do
+        if enemy.flash > 0 then
+            enemy.flash -= 1
+            -- flashes the enemy white
+            for i = 1, 15 do
+                pal(i, 7)
+            end
+        end
         drawsprite(enemy)
+        -- resets the enemy colour after flash
+        pal()
     end
 
     -- Draws bullets
