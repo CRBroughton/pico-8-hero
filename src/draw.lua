@@ -37,10 +37,16 @@ function draw_game()
     end
 
     -- draws the explosions
+    local exframes = {64, 64, 66, 68, 70, 70, 72}
     for explosion in all(explosions) do
-        spr(64, explosion.x - 4, explosion.y - 4, 2, 2)
-        explosion.life -= 1
-        if explosion.life <= 0 then
+
+        local age = explosion.age
+        age = flr(age)
+        age = exframes[age]
+
+        spr(age, explosion.x - 4, explosion.y - 4, 2, 2)
+        explosion.age += 1
+        if explosion.age > #exframes then
             del(explosions, explosion)
         end
     end

@@ -37,7 +37,7 @@ function createexplosion(posx, posy)
     local explosion = {
         x = posx,
         y = posy,
-        life = 10
+        age = 1
     }
 
     add(explosions, explosion)
