@@ -61,6 +61,7 @@ function createparticle(posx, posy, isblue)
         }
         add(particles, particle)
     end
+    big_wave(posx, posy)
 end
 
 function particle_age_red(age)
@@ -117,7 +118,21 @@ function small_wave(wavex, wavey)
         y = wavey,
         r = 3,
         mr = 6,
-        colour = 9
+        colour = 9,
+        speed = 1
+    }
+
+    add(waves, wave)
+end
+
+function big_wave(wavex, wavey)
+    local wave = {
+        x = wavex,
+        y = wavey,
+        r = 3,
+        mr = 25,
+        colour = 7,
+        speed = 3.5
     }
 
     add(waves, wave)

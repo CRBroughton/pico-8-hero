@@ -39,7 +39,7 @@ function draw_game()
     -- draw waves
     for wave in all(waves) do
         circ(wave.x, wave.y, wave.r, wave.colour)
-        wave.r += 1
+        wave.r += wave.speed
 
         if wave.r > wave.mr then
             del(waves, wave)
