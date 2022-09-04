@@ -15,7 +15,16 @@ function draw_game()
 
     -- draw enemies
     for enemy in all(enemies) do
+        if enemy.flash > 0 then
+            enemy.flash -= 1
+            -- flashes the enemy white
+            for i = 1, 15 do
+                pal(i, 7)
+            end
+        end
         drawsprite(enemy)
+        -- resets the enemy colour after flash
+        pal()
     end
 
     -- Draws bullets
@@ -26,8 +35,26 @@ function draw_game()
     if ship.muzzle > 0 then
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
+
+    -- draws the explosions
+    local exframes = {64, 64, 66, 68, 70, 70, 72}
+    for explosion in all(explosions) do
+
+        local age = explosion.age
+        age = flr(age)
+        age = exframes[age]
+
+        spr(age, explosion.x - 4, explosion.y - 4, 2, 2)
+        explosion.age += 1
+        if explosion.age > #exframes then
+            del(explosions, explosion)
+        end
+    end
+
+    -- draws the scoreboard
     print("score: " .. score, 40, 1, 12)
 
+    -- draws the health hearts
     for i = 1, ship.max_lives do
         if ship.lives >= i then
             spr(13, i * 9 - 8, 1)

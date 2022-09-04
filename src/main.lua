@@ -64,5 +64,7 @@ function startgame()
 
     enemies = {}
 
+    explosions = {}
+
     spawnenemy()
 end
