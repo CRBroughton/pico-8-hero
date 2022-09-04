@@ -66,5 +66,7 @@ function startgame()
 
     explosions = {}
 
+    particles = {}
+
     spawnenemy()
 end
