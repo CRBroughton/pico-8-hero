@@ -156,3 +156,19 @@ function big_wave(wavex, wavey)
 
     add(waves, wave)
 end
+
+function small_spark(sparkx, sparky)
+    -- sparks when hit
+    local spark = {
+        x = sparkx,
+        y = sparky,
+        speedx = (rnd() - 0.5) * 8,
+        speedy = (rnd() - 1) * 3,
+        age = rnd(2),
+        maxage = 10 + rnd(10),
+        size = 1 + rnd(4),
+        blue = isblue,
+        spark = true
+    }
+    add(particles, spark)
+end

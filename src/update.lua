@@ -54,6 +54,7 @@ function update_game()
             if iscolliding(enemy, bullet) then
                 del (bullets, bullet)
                 small_wave(bullet.x + 4, bullet.y + 4)
+                small_spark(enemy.x + 4, enemy.y + 4)
                 enemy.hp -= 1
                 sfx(3)
                 enemy.flash = 2
