@@ -55,8 +55,14 @@ function draw_game()
         else
             particlecolour = particle_age_red(particle.age)
         end
+        
+        -- draws the particles
+        if particle.spark then
+            pset(particle.x, particle.y, 7)
+        else
+            circfill(particle.x, particle.y, particle.size, particlecolour)
+        end
 
-        circfill(particle.x, particle.y, particle.size, particlecolour)
         particle.x += particle.speedx
         particle.y += particle.speedy
         particle.speedx = particle.speedx * 0.9

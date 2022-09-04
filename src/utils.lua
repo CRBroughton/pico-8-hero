@@ -61,7 +61,26 @@ function createparticle(posx, posy, isblue)
         }
         add(particles, particle)
     end
+
+    -- sparks
+    for i = 1, 30 do
+        local spark = {
+            x = posx,
+            y = posy,
+            speedx = (rnd() - 0.5) * 6,
+            speedy = (rnd() - 0.5) * 6,
+            age = rnd(2),
+            maxage = 10 + rnd(10),
+            size = 1 + rnd(4),
+            blue = isblue,
+            spark = true
+        }
+        add(particles, spark)
+    end
+
+    -- creates the big wave around explosion
     big_wave(posx, posy)
+
 end
 
 function particle_age_red(age)
