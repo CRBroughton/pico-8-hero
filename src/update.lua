@@ -61,7 +61,7 @@ function update_game()
                     sfx(2)
                     score += 1
                     spawnenemy()
-                    createexplosion(enemy.x, enemy.y)
+                    createparticle(enemy.x, enemy.y)
                 end
             end
         end

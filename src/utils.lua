@@ -42,3 +42,17 @@ function createexplosion(posx, posy)
 
     add(explosions, explosion)
 end
+
+function createparticle(posx, posy)
+    for i = 1, 40 do
+        local particle = {
+            x = posx,
+            y = posy,
+            speedx = (rnd() - 0.5) * 6,
+            speedy = (rnd() - 0.5) * 6,
+            age = 0,
+            maxage = 20 + rnd(20)
+        }
+        add(particles, particle)
+    end
+end

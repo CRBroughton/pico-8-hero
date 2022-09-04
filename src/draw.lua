@@ -51,6 +51,18 @@ function draw_game()
         end
     end
 
+    --draw particles
+    for particle in all(particles) do
+        pset(particle.x, particle.y, 7)
+        particle.x += particle.speedx
+        particle.y += particle.speedy
+        particle.age += 1
+
+        if particle.age > particle.maxage then
+            del(particles, particle)
+        end
+    end
+
     -- draws the scoreboard
     print("score: " .. score, 40, 1, 12)
 
