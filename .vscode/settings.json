@@ -4,6 +4,7 @@
         "start",
         "starfield",
         "enemies",
-        "player"
+        "player",
+        "particles"
     ]
 }

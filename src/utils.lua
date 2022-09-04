@@ -33,25 +33,27 @@ function spawnenemy()
     add(enemies, enemy)
 end
 
-function createexplosion(posx, posy)
-    local explosion = {
+function createparticle(posx, posy)
+    local particle = {
         x = posx,
         y = posy,
-        age = 1
+        speedx = 0,
+        speedy = 0,
+        age = 0,
+        maxage = 0,
+        size = 8,
     }
+    add(particles, particle)
 
-    add(explosions, explosion)
-end
-
-function createparticle(posx, posy)
-    for i = 1, 40 do
+    for i = 1, 30 do
         local particle = {
             x = posx,
             y = posy,
             speedx = (rnd() - 0.5) * 6,
             speedy = (rnd() - 0.5) * 6,
-            age = 0,
-            maxage = 20 + rnd(20)
+            age = rnd(2),
+            maxage = 10 + rnd(10),
+            size = 1 + rnd(4),
         }
         add(particles, particle)
     end

@@ -36,30 +36,43 @@ function draw_game()
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
 
-    -- draws the explosions
-    local exframes = {64, 64, 66, 68, 70, 70, 72}
-    for explosion in all(explosions) do
-
-        local age = explosion.age
-        age = flr(age)
-        age = exframes[age]
-
-        spr(age, explosion.x - 4, explosion.y - 4, 2, 2)
-        explosion.age += 1
-        if explosion.age > #exframes then
-            del(explosions, explosion)
-        end
-    end
-
     --draw particles
     for particle in all(particles) do
-        pset(particle.x, particle.y, 7)
+        local particlecolour = 7
+
+        if particle.age > 5 then
+            particlecolour = 10
+        end
+        
+        if particle.age > 7 then
+            particlecolour = 9
+        end
+
+        if particle.age > 10 then
+            particlecolour = 8
+        end
+
+        if particle.age > 12 then
+            particlecolour = 2
+        end
+
+        if particle.age > 15 then
+            particlecolour = 5
+        end
+
+        circfill(particle.x, particle.y, particle.size, particlecolour)
         particle.x += particle.speedx
         particle.y += particle.speedy
+        particle.speedx = particle.speedx * 0.9
+        particle.speedy = particle.speedy * 0.9
+
         particle.age += 1
 
         if particle.age > particle.maxage then
-            del(particles, particle)
+            particle.size -= 0.5
+            if particle.size < 0 then
+                del(particles, particle)
+            end
         end
     end
 
