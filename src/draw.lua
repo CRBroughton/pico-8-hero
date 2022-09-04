@@ -35,8 +35,20 @@ function draw_game()
     if ship.muzzle > 0 then
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
+
+    -- draws the explosions
+    for explosion in all(explosions) do
+        spr(64, explosion.x - 4, explosion.y - 4, 2, 2)
+        explosion.life -= 1
+        if explosion.life <= 0 then
+            del(explosions, explosion)
+        end
+    end
+
+    -- draws the scoreboard
     print("score: " .. score, 40, 1, 12)
 
+    -- draws the health hearts
     for i = 1, ship.max_lives do
         if ship.lives >= i then
             spr(13, i * 9 - 8, 1)
