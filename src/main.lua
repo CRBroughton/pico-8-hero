@@ -68,5 +68,7 @@ function startgame()
 
     particles = {}
 
+    waves = {}
+
     spawnenemy()
 end

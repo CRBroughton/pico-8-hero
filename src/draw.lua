@@ -36,31 +36,33 @@ function draw_game()
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
 
+    -- draw waves
+    for wave in all(waves) do
+        circ(wave.x, wave.y, wave.r, wave.colour)
+        wave.r += wave.speed
+
+        if wave.r > wave.mr then
+            del(waves, wave)
+        end
+    end
+
     --draw particles
     for particle in all(particles) do
         local particlecolour = 7
 
-        if particle.age > 5 then
-            particlecolour = 10
+        if particle.blue then        
+            particlecolour = particle_age_blue(particle.age)
+        else
+            particlecolour = particle_age_red(particle.age)
         end
         
-        if particle.age > 7 then
-            particlecolour = 9
+        -- draws the particles
+        if particle.spark then
+            pset(particle.x, particle.y, 7)
+        else
+            circfill(particle.x, particle.y, particle.size, particlecolour)
         end
 
-        if particle.age > 10 then
-            particlecolour = 8
-        end
-
-        if particle.age > 12 then
-            particlecolour = 2
-        end
-
-        if particle.age > 15 then
-            particlecolour = 5
-        end
-
-        circfill(particle.x, particle.y, particle.size, particlecolour)
         particle.x += particle.speedx
         particle.y += particle.speedy
         particle.speedx = particle.speedx * 0.9
