@@ -63,12 +63,12 @@ function createparticle(posx, posy, isblue)
     end
 
     -- sparks
-    for i = 1, 30 do
+    for i = 1, 20 do
         local spark = {
             x = posx,
             y = posy,
-            speedx = (rnd() - 0.5) * 6,
-            speedy = (rnd() - 0.5) * 6,
+            speedx = (rnd() - 0.5) * 10,
+            speedy = (rnd() - 0.5) * 10,
             age = rnd(2),
             maxage = 10 + rnd(10),
             size = 1 + rnd(4),
