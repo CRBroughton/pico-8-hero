@@ -34,7 +34,7 @@ function update_game()
 
             sfx(0)
             ship.muzzle = 6
-            bullettime = 3
+            bullettime = 5
         end
     end
     bullettime -= 1
@@ -53,6 +53,7 @@ function update_game()
         for bullet in all(bullets) do
             if iscolliding(enemy, bullet) then
                 del (bullets, bullet)
+                small_wave(bullet.x + 4, bullet.y + 4)
                 enemy.hp -= 1
                 sfx(3)
                 enemy.flash = 2

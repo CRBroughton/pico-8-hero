@@ -110,3 +110,15 @@ function particle_age_blue(age)
     end
     return particlecolour
 end
+
+function small_wave(wavex, wavey)
+    local wave = {
+        x = wavex,
+        y = wavey,
+        r = 3,
+        mr = 6,
+        colour = 9
+    }
+
+    add(waves, wave)
+end

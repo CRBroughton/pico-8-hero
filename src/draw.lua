@@ -36,6 +36,16 @@ function draw_game()
         circfill(ship.x + 3, ship.y - 2, ship.muzzle, 7)
     end
 
+    -- draw waves
+    for wave in all(waves) do
+        circ(wave.x, wave.y, wave.r, wave.colour)
+        wave.r += 1
+
+        if wave.r > wave.mr then
+            del(waves, wave)
+        end
+    end
+
     --draw particles
     for particle in all(particles) do
         local particlecolour = 7
