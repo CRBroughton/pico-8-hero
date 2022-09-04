@@ -106,6 +106,7 @@ function update_game()
     if ship.invul <= 0 then
         for enemy in all(enemies) do
             if iscolliding(enemy, ship) then
+                createparticle(ship.x + 4, ship.y + 4, true)
                 ship.lives -= 1
                 sfx(1)
                 ship.invul = 30

@@ -40,24 +40,10 @@ function draw_game()
     for particle in all(particles) do
         local particlecolour = 7
 
-        if particle.age > 5 then
-            particlecolour = 10
-        end
-        
-        if particle.age > 7 then
-            particlecolour = 9
-        end
-
-        if particle.age > 10 then
-            particlecolour = 8
-        end
-
-        if particle.age > 12 then
-            particlecolour = 2
-        end
-
-        if particle.age > 15 then
-            particlecolour = 5
+        if particle.blue then        
+            particlecolour = particle_age_blue(particle.age)
+        else
+            particlecolour = particle_age_red(particle.age)
         end
 
         circfill(particle.x, particle.y, particle.size, particlecolour)
