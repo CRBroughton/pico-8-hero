@@ -59,7 +59,9 @@ function startgame()
         hspeed = 1,
         sprite = 2,
         flame = 5,
-        muzzle = 0
+        muzzle = 0,
+        width = 1,
+        height = 1,
     }
 
     score = 0

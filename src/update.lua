@@ -28,6 +28,8 @@ function update_game()
                 x = ship.x,
                 y = ship.y - 3,
                 sprite = 16,
+                width = 1,
+                height = 1,
             }
 
             add(bullets, bullet)

@@ -26,7 +26,9 @@ function spawnenemy(enemytype)
         x = rnd(120),
         y = -8,
         flash = 0,
-        frame = 1
+        frame = 1,
+        width = 1,
+        height = 1
     }
 
     if enemytype == nil or enemytype == 1 then
@@ -49,6 +51,8 @@ function spawnenemy(enemytype)
         enemy.sprite = 208
         enemy.hp = 5
         enemy.animation = {208, 210}
+        enemy.width = 2
+        enemy.height = 2
     end
 
     add(enemies, enemy)

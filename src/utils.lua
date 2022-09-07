@@ -1,5 +1,5 @@
 function drawsprite(sprite)
-    spr(sprite.sprite, sprite.x, sprite.y)
+    spr(sprite.sprite, sprite.x, sprite.y, sprite.width, sprite.height)
 end
 
 function iscolliding(spritea, spriteb)
