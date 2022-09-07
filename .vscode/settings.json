@@ -5,6 +5,8 @@
         "starfield",
         "enemies",
         "player",
-        "particles"
+        "particles",
+        "scenes",
+        "music"
     ]
 }
