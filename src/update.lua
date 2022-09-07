@@ -62,8 +62,12 @@ function update_game()
                     del (enemies, enemy)
                     sfx(2)
                     score += 1
-                    spawnenemy()
                     createparticle(enemy.x + 4, enemy.y + 4)
+
+                    -- checks for wave finished
+                    if #enemies == 0 then
+                        nextwave()
+                    end
                 end
             end
         end
@@ -139,13 +143,51 @@ function update_game()
 end
 
 function update_start()
+    if btn(4) == false and btn(5) == false then
+        buttonreleased = true
+    end
+    if buttonreleased then
+        if btnp(4) or btnp(5) then
+            startgame()
+            buttonreleased = false
+        end
+    end
+
     if btnp(4) or btnp(5) then
         startgame()
     end
 end
 
 function update_over() 
-    if btnp(4) or btnp(5) then
-        mode = "start"
+    if btn(4) == false and btn(5) == false then
+        buttonreleased = true
+    end
+    if buttonreleased then
+        if btnp(4) or btnp(5) then
+            mode = "start"
+            buttonreleased = false
+        end
+    end
+end
+
+function update_win() 
+    if btn(4) == false and btn(5) == false then
+        buttonreleased = true
+    end
+    if buttonreleased then
+        if btnp(4) or btnp(5) then
+            mode = "start"
+            buttonreleased = false
+        end
+    end
+end
+
+function update_wavetext()
+    update_game()
+    wavetime -= 1
+
+    if wavetime <= 0 then
+        mode = "game"
+        spawnwave()
     end
 end

@@ -13,8 +13,12 @@ function _draw()
         draw_game()
     elseif mode == "start" then
         draw_start()
+    elseif mode == "wavetext" then
+        draw_wavetext()
     elseif mode == "over" then
         draw_over()
+    elseif mode == "win" then
+        draw_win()
     end
 end
 
@@ -25,14 +29,19 @@ function _update()
         update_game()
     elseif mode == "start" then
         update_start()
+    elseif mode == "wavetext" then
+        update_wavetext()
     elseif mode == "over" then
         update_over()
+    elseif mode == "win" then
+        update_win()
     end
 end
 
 function startgame() 
-    mode = "game"
     time = 0
+    wave = 0
+    nextwave()
     ship = {
         lives = 4,
         invul = 0,
@@ -70,5 +79,4 @@ function startgame()
 
     waves = {}
 
-    spawnenemy()
 end
