@@ -1,5 +1,13 @@
 function spawnwave()
-    spawnenemy()
+    if wave == 1 then
+        spawnenemy(1)
+    elseif wave == 2 then
+        spawnenemy(2)
+    elseif wave == 3 then
+        spawnenemy(3)
+    elseif wave == 4 then
+        spawnenemy(4)
+    end
 end
 
 function nextwave()
@@ -18,24 +26,29 @@ function spawnenemy(enemytype)
         x = rnd(120),
         y = -8,
         flash = 0,
+        frame = 1
     }
 
     if enemytype == nil or enemytype == 1 then
         -- green enemy
         enemy.sprite = 21
         enemy.hp = 5
+        enemy.animation = {21, 22, 23, 24}
     elseif enemytype == 2 then
         -- red enemy
         enemy.sprite = 148
         enemy.hp = 5
+        enemy.animation = {148, 149}
     elseif enemytype == 3 then
         -- spinning enemy
         enemy.sprite = 184
         enemy.hp = 5
+        enemy.animation = {184, 185, 186, 187}
     elseif enemytype == 4 then
         -- boss
         enemy.sprite = 208
         enemy.hp = 5
+        enemy.animation = {208, 210}
     end
 
     add(enemies, enemy)

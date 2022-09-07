@@ -76,10 +76,12 @@ function update_game()
     -- Animates the enemies
     for enemy in all(enemies) do
         enemy.y += 1
-        enemy.sprite += 0.5
-        if enemy.sprite >= 25 then
-            enemy.sprite = 21
+        enemy.frame += 0.5
+        -- Iterates over the animation array
+        if flr(enemy.frame) > #enemy.animation then
+            enemy.frame = 1
         end
+        enemy.sprite = enemy.animation[flr(enemy.frame)]
 
         if enemy.y > 128 then
             del(enemies, enemy)
