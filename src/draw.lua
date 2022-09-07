@@ -1,15 +1,17 @@
 function draw_game()
     cls(0)
     starfield()
-    --invul state for player
-    if ship.invul <= 0 then
-        drawsprite(ship)
-        spr(ship.flame, ship.x, ship.y + 8)
-    else 
-        -- Flashes the playes ship if collision
-        if sin(time / 10) < 0 then
+    if ship.lives > 0 then
+        --invul state for player
+        if ship.invul <= 0 then
             drawsprite(ship)
             spr(ship.flame, ship.x, ship.y + 8)
+        else 
+            -- Flashes the playes ship if collision
+            if sin(time / 10) < 0 then
+                drawsprite(ship)
+                spr(ship.flame, ship.x, ship.y + 8)
+            end
         end
     end
 
@@ -98,7 +100,7 @@ function draw_start()
 end
 
 function draw_over()
-    cls(8)
+    draw_game()
     print("game over", 50, 40, 2)
     print("press either z or x key", 20, 80, blink())
     print("to continue", 45, 90, 7)
@@ -111,7 +113,7 @@ function draw_wavetext()
 end
 
 function draw_win()
-    cls(11)
+    draw_game()
     print("Congratulations", 40, 40, 2)
     print("press either z or x key", 20, 80, blink())
     print("to continue", 45, 90, 7)
