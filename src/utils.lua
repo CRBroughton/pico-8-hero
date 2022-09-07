@@ -1,5 +1,5 @@
 function drawsprite(sprite)
-    spr(sprite.sprite, sprite.x, sprite.y)
+    spr(sprite.sprite, sprite.x, sprite.y, sprite.width, sprite.height)
 end
 
 function iscolliding(spritea, spriteb)
@@ -19,18 +19,6 @@ function iscolliding(spritea, spriteb)
     if b_left > a_right then return false end
 
     return true
-end
-
-function spawnenemy()
-    local enemy = {
-        x = rnd(120),
-        y = -8,
-        sprite = 21,
-        hp = 5,
-        flash = 0
-    }
-
-    add(enemies, enemy)
 end
 
 function createparticle(posx, posy, isblue)
