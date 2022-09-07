@@ -6,6 +6,7 @@
         "enemies",
         "player",
         "particles",
-        "scenes"
+        "scenes",
+        "music"
     ]
 }
