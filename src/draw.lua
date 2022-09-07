@@ -104,3 +104,15 @@ function draw_over()
     print("to continue", 45, 90, 7)
 
 end
+
+function draw_wavetext()
+    draw_game()
+    print("wave " .. wave, 52, 40, blink())
+end
+
+function draw_win()
+    cls(11)
+    print("Congratulations", 40, 40, 2)
+    print("press either z or x key", 20, 80, blink())
+    print("to continue", 45, 90, 7)
+end
