@@ -3,6 +3,7 @@ function _init()
     cls(0)
     -- state machine for game mode
     mode = "start"
+    startscreen()
     blinkt = 1
     time = 0
 
@@ -38,7 +39,13 @@ function _update()
     end
 end
 
+function startscreen()
+    mode = "start"
+    music(1)
+end
+
 function startgame() 
+    music(-1, 1000)
     time = 0
     wave = 0
     nextwave()

@@ -125,6 +125,7 @@ function update_game()
     -- checks if the player is out of lives
     if ship.lives <= 0 then
         mode = "over"
+        music(6)
         return
     end
 
@@ -164,7 +165,7 @@ function update_over()
     end
     if buttonreleased then
         if btnp(4) or btnp(5) then
-            mode = "start"
+            startscreen()
             buttonreleased = false
         end
     end
@@ -176,7 +177,7 @@ function update_win()
     end
     if buttonreleased then
         if btnp(4) or btnp(5) then
-            mode = "start"
+            startscreen()
             buttonreleased = false
         end
     end
