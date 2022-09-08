@@ -160,3 +160,18 @@ function small_spark(sparkx, sparky)
     }
     add(particles, spark)
 end
+
+function makesprite()
+    local sprite = {
+        x = 0,
+        y = 0,
+        flash = 0,
+        frame = 1,
+        width = 1,
+        height = 1,
+        sprite = 0,
+        collisionwidth = 8,
+        collisionheight = 8
+    }
+    return sprite
+end
