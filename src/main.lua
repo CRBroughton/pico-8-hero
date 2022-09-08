@@ -45,7 +45,6 @@ function startscreen()
 end
 
 function startgame() 
-    music(0)
     time = 0
     wave = 0
     nextwave()

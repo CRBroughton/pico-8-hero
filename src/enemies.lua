@@ -17,6 +17,11 @@ function nextwave()
         mode = "win"
         music(4)
     else
+        if wave == 1 then
+            music(0)
+        else 
+            music(3)
+        end
         mode = "wavetext"
         wavetime = 80
     end
