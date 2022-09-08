@@ -15,21 +15,23 @@ function nextwave()
 
     if wave > 4 then
         mode = "win"
+        lockout = time + 30
+        music(4)
     else
+        if wave == 1 then
+            music(0)
+        else 
+            music(3)
+        end
         mode = "wavetext"
         wavetime = 80
     end
 end
 
 function spawnenemy(enemytype)
-    local enemy = {
-        x = rnd(120),
-        y = -8,
-        flash = 0,
-        frame = 1,
-        width = 1,
-        height = 1
-    }
+    local enemy = makesprite()
+    enemy.x = rnd(120)
+    enemy.y = -8
 
     if enemytype == nil or enemytype == 1 then
         -- green enemy
@@ -53,6 +55,8 @@ function spawnenemy(enemytype)
         enemy.animation = {208, 210}
         enemy.width = 2
         enemy.height = 2
+        enemy.collisionwidth = 16
+        enemy.collisionheight = 16
     end
 
     add(enemies, enemy)
