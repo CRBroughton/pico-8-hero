@@ -33,7 +33,7 @@ function update_game()
             add(bullets, bullet)
 
             sfx(0)
-            ship.muzzle = 6
+            ship.muzzle = 5
             bullettime = 5
         end
     end
