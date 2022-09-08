@@ -41,11 +41,11 @@ end
 
 function startscreen()
     mode = "start"
-    music(1)
+    music(7)
 end
 
 function startgame() 
-    music(-1, 1000)
+    music(0)
     time = 0
     wave = 0
     nextwave()

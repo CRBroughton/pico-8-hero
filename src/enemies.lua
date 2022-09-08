@@ -15,6 +15,7 @@ function nextwave()
 
     if wave > 4 then
         mode = "win"
+        music(4)
     else
         mode = "wavetext"
         wavetime = 80
