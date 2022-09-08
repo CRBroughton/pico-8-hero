@@ -24,13 +24,10 @@ function update_game()
 
     if btn(5) then
         if bullettime <= 0 then
-            local bullet = {
-                x = ship.x,
-                y = ship.y - 3,
-                sprite = 16,
-                width = 1,
-                height = 1,
-            }
+            local bullet = makesprite()
+            bullet.x = ship.x
+            bullet.y = ship.y - 3
+            bullet.sprite = 16
 
             add(bullets, bullet)
 

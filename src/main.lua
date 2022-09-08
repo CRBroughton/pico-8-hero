@@ -49,20 +49,17 @@ function startgame()
     lockout = 0
     wave = 3
     nextwave()
-    ship = {
-        lives = 4,
-        invul = 0,
-        max_lives = 4,
-        x = 60,
-        y = 60,
-        vspeed = 1,
-        hspeed = 1,
-        sprite = 2,
-        flame = 5,
-        muzzle = 0,
-        width = 1,
-        height = 1,
-    }
+    ship = makesprite()
+    ship.lives = 4
+    ship.invul = 0
+    ship.max_lives = 4
+    ship.x = 60
+    ship.y = 60
+    ship.vspeed = 1
+    ship.hspeed = 1
+    ship.sprite = 2
+    ship.flame = 5
+    ship.muzzle = 0
 
     score = 0
 
