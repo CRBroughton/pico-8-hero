@@ -65,11 +65,6 @@ function update_game()
                     sfx(2)
                     score += 1
                     createparticle(enemy.x + 4, enemy.y + 4)
-
-                    -- checks for wave finished
-                    if #enemies == 0 then
-                        nextwave()
-                    end
                 end
             end
         end
@@ -87,7 +82,6 @@ function update_game()
 
         if enemy.y > 128 then
             del(enemies, enemy)
-            spawnenemy()
         end
     end
 
@@ -145,6 +139,11 @@ function update_game()
     end
 
     animatestars()
+
+    -- checks for wave finished
+    if mode == "game" and #enemies == 0 then
+        nextwave()
+    end
 end
 
 function update_start()
