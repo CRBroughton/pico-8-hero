@@ -46,6 +46,7 @@ end
 
 function startgame() 
     time = 0
+    lockout = 0
     wave = 0
     nextwave()
     ship = {
