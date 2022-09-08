@@ -24,18 +24,16 @@ function update_game()
 
     if btn(5) then
         if bullettime <= 0 then
-            local bullet = {
-                x = ship.x,
-                y = ship.y - 3,
-                sprite = 16,
-                width = 1,
-                height = 1,
-            }
+            local bullet = makesprite()
+            bullet.x = ship.x + 1
+            bullet.y = ship.y - 3
+            bullet.sprite = 16
+            bullet.collisionwidth = 6
 
             add(bullets, bullet)
 
             sfx(0)
-            ship.muzzle = 6
+            ship.muzzle = 5
             bullettime = 5
         end
     end
@@ -65,11 +63,6 @@ function update_game()
                     sfx(2)
                     score += 1
                     createparticle(enemy.x + 4, enemy.y + 4)
-
-                    -- checks for wave finished
-                    if #enemies == 0 then
-                        nextwave()
-                    end
                 end
             end
         end
@@ -87,7 +80,6 @@ function update_game()
 
         if enemy.y > 128 then
             del(enemies, enemy)
-            spawnenemy()
         end
     end
 
@@ -129,6 +121,8 @@ function update_game()
     -- checks if the player is out of lives
     if ship.lives <= 0 then
         mode = "over"
+        -- stops the player from spamming fire button if dead
+        lockout = time + 30
         music(6)
         return
     end
@@ -145,6 +139,11 @@ function update_game()
     end
 
     animatestars()
+
+    -- checks for wave finished
+    if mode == "game" and #enemies == 0 then
+        nextwave()
+    end
 end
 
 function update_start()
@@ -164,6 +163,10 @@ function update_start()
 end
 
 function update_over() 
+    -- stops the player from spamming fire button if dead
+    if time < lockout then
+        return
+    end
     if btn(4) == false and btn(5) == false then
         buttonreleased = true
     end
@@ -175,7 +178,11 @@ function update_over()
     end
 end
 
-function update_win() 
+function update_win()
+    -- stops the player from spamming fire button if dead
+    if time < lockout then
+        return
+    end
     if btn(4) == false and btn(5) == false then
         buttonreleased = true
     end
