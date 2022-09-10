@@ -13,3 +13,4 @@ function fire(enemy)
     add(enemybullets, bullet)
     sfx(29)
 end
+

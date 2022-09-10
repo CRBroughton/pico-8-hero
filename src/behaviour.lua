@@ -73,6 +73,10 @@ function picktimer()
         return
     end
 
+    if time % 30 == 0 then
+        pickfire()
+    end
+
     -- every 2 seconds
     if time % attackfreq == 0 then
         pickattack()
@@ -87,10 +91,22 @@ function pickattack()
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
-        -- enemy.mission = "attack"
-        -- enemy.animationspeed *= 3
-        -- enemy.wait = 60
-        -- enemy.shake = 60
+        enemy.mission = "attack"
+        enemy.animationspeed *= 3
+        enemy.wait = 60
+        enemy.shake = 60
+        fire(enemy)
+    end
+end
+
+function pickfire()
+    local max = min(10, #enemies)
+    local index = flr(rnd(max))
+    index = #enemies - index
+
+    local enemy = enemies[index]
+
+    if enemy and enemy.mission == "protect" then
         fire(enemy)
     end
 end
