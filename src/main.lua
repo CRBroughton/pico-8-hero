@@ -78,6 +78,7 @@ function startgame()
 
     bullettime = 0
     bullets = {}
+    enemybullets = {}
 
     enemies = {}
 

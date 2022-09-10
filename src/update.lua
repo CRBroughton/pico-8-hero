@@ -39,12 +39,21 @@ function update_game()
     end
     bullettime -= 1
 
-    -- Animates the bullet
+    -- Animates the bullets
     for bullet in all(bullets) do
         bullet.y -= 2
 
         if bullet.y < -8 then
             del(bullets, bullet)
+        end
+    end
+
+    -- Animates the enemy bullets
+    for bullet in all(enemybullets) do
+        move(bullet)
+        animate(bullet)
+        if bullet.y > 128 or bullet.x < -8 or bullet.x > 128 or bullet.y < -8 then
+            del(enemybullets, bullet)
         end
     end
 
@@ -70,13 +79,8 @@ function update_game()
     for enemy in all(enemies) do
         -- enemy mission
         performenemymission(enemy)
-        enemy.frame += enemy.animationspeed
         -- Iterates over the animation array
-        if flr(enemy.frame) > #enemy.animation then
-            enemy.frame = 1
-        end
-        enemy.sprite = enemy.animation[flr(enemy.frame)]
-
+        animate(enemy)
         -- enemy cleanup
         if enemy.mission != "flyin" then
             if enemy.y > 128 or enemy.x < -8 or enemy.x > 128 then
@@ -118,6 +122,18 @@ function update_game()
         end
     else 
         ship.invul -= 1
+    end
+
+    -- checks if an bullet is colliding with player
+    if ship.invul <= 0 then
+        for bullet in all(enemybullets) do
+            if iscolliding(bullet, ship) then
+                createparticle(ship.x + 4, ship.y + 4, true)
+                ship.lives -= 1
+                sfx(1)
+                ship.invul = 30
+            end
+        end
     end
 
     -- checks if the player is out of lives

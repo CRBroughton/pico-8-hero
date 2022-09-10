@@ -87,10 +87,11 @@ function pickattack()
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
-        enemy.mission = "attack"
-        enemy.animationspeed *= 3
-        enemy.wait = 60
-        enemy.shake = 60
+        -- enemy.mission = "attack"
+        -- enemy.animationspeed *= 3
+        -- enemy.wait = 60
+        -- enemy.shake = 60
+        fire(enemy)
     end
 end
 
@@ -112,3 +113,12 @@ function killed(enemy)
         end
     end
 end
+
+function animate(enemy)
+    enemy.frame += enemy.animationspeed
+    if flr(enemy.frame) > #enemy.animation then
+        enemy.frame = 1
+    end
+    enemy.sprite = enemy.animation[flr(enemy.frame)]
+end
+
