@@ -13,9 +13,24 @@ function performenemymission(enemy)
             enemy.mission = "protect"
         end
     elseif enemy.mission == "protect" then
-        -- enemy.y += 10
         -- stay up
     elseif enemy.mission == "attack" then
         -- attack the player
+        enemy.y += 1.7
+    end
+end
+
+function pickenemy()
+    if mode != "game" then
+        return
+    end
+
+    -- every 2 seconds
+    if time % 60 == 0 then
+        local enemy = rnd(enemies)
+
+        if enemy.mission == "protect" then
+            enemy.mission = "attack"
+        end
     end
 end
