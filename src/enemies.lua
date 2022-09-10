@@ -62,7 +62,12 @@ end
 function spawnenemy(enemytype, enemyx, enemyy)
     local enemy = makesprite()
     enemy.x = enemyx
-    enemy.y = enemyy
+    enemy.y = enemyy - 66
+
+    enemy.posx = enemyx
+    enemy.posy = enemyy
+
+    enemy.mission = "flyin"
 
     if enemytype == nil or enemytype == 1 then
         -- green enemy
