@@ -20,7 +20,7 @@ function performenemymission(enemy)
         if enemy.type == 1 then
             -- green
             enemy.sy = 1.7
-            enemy.sx = sin(time / 45)
+            enemy.sx = sin(gametime / 45)
 
             -- boost enemy towards the center if
             -- on the edge of the screen
@@ -33,7 +33,7 @@ function performenemymission(enemy)
         elseif enemy.type == 2 then
             --red
             enemy.sy = 2.5
-            enemy.sx = sin(time / 20)
+            enemy.sx = sin(gametime / 20)
 
             -- boost enemy towards the center if
             -- on the edge of the screen
@@ -63,6 +63,10 @@ function performenemymission(enemy)
             enemy.sy = 0.35
             if enemy.y > 110 then
                 enemy.sy = 1
+            else 
+                if gametime % 30 == 0 then
+                    firespread(enemy, 8, 1, rnd())
+                end
             end
         end
         move(enemy)
@@ -74,13 +78,13 @@ function picktimer()
         return
     end
 
-    if time > nextfire then
+    if gametime > nextfire then
         pickfire()
-        nextfire = time + 20 + rnd(20)
+        nextfire = gametime + 20 + rnd(20)
     end
 
     -- every 2 seconds
-    if time % attackfreq == 0 then
+    if gametime % attackfreq == 0 then
         pickattack()
     end
 end
@@ -97,7 +101,6 @@ function pickattack()
         enemy.animationspeed *= 3
         enemy.wait = 60
         enemy.shake = 60
-        fire(enemy)
     end
 end
 
@@ -109,7 +112,8 @@ function pickfire()
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
-        fire(enemy)
+        -- fire(enemy, 0.25, 2)
+        firespread(enemy, 8, 2)
     end
 end
 

@@ -51,7 +51,7 @@ function nextwave()
 
     if wave > 4 then
         mode = "win"
-        lockout = time + 30
+        lockout = gametime + 30
         music(4)
     else
         if wave == 1 then
