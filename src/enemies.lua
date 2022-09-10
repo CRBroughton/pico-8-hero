@@ -1,4 +1,5 @@
 function spawnwave()
+    attackfreq = 10
     sfx(28)
     if wave == 1 then
         placeenemies({
@@ -8,6 +9,7 @@ function spawnwave()
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
         })
     elseif wave == 2 then
+        attackfreq = 60
         placeenemies({
             { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
             { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
@@ -15,6 +17,7 @@ function spawnwave()
             { 1, 1, 2, 2, 2, 2, 2, 2, 1, 1 },
         })
     elseif wave == 3 then
+        attackfreq = 60
         placeenemies({
             { 3, 3, 0, 2, 2, 2, 2, 0, 3, 3 },
             { 3, 3, 0, 2, 2, 2, 2, 0, 3, 3 },
@@ -22,6 +25,7 @@ function spawnwave()
             { 3, 3, 0, 2, 0, 0, 2, 0, 3, 3 },
         })
     elseif wave == 4 then
+        attackfreq = 60
         placeenemies({
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0 },
@@ -67,9 +71,12 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
 
     enemy.posx = enemyx
     enemy.posy = enemyy
+    
+    enemy.type = enemytype
 
     enemy.wait = enemywait
 
+    enemy.animationspeed = 0.4
     enemy.mission = "flyin"
 
     if enemytype == nil or enemytype == 1 then

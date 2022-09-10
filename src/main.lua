@@ -63,6 +63,8 @@ function startgame()
 
     score = 0
 
+    attackfreq = 60
+
     stars = {}
 
     -- Add stars into the stars arrays
