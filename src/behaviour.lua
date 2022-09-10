@@ -68,29 +68,47 @@ function performenemymission(enemy)
     end
 end
 
-function pickenemy()
+function picktimer()
     if mode != "game" then
         return
     end
 
     -- every 2 seconds
     if time % attackfreq == 0 then
-        local max = min(10, #enemies)
-        local index = flr(rnd(max))
-        index = #enemies - index
+        pickattack()
+    end
+end
 
-        local enemy = enemies[index]
+function pickattack()
+    local max = min(10, #enemies)
+    local index = flr(rnd(max))
+    index = #enemies - index
 
-        if enemy and enemy.mission == "protect" then
-            enemy.mission = "attack"
-            enemy.animationspeed *= 3
-            enemy.wait = 60
-            enemy.shake = 60
-        end
+    local enemy = enemies[index]
+
+    if enemy and enemy.mission == "protect" then
+        enemy.mission = "attack"
+        enemy.animationspeed *= 3
+        enemy.wait = 60
+        enemy.shake = 60
     end
 end
 
 function move(obj)
     obj.x += obj.sx
     obj.y += obj.sy
+end
+
+function killed(enemy)
+    del (enemies, enemy)
+    sfx(2)
+    score += 1
+    createparticle(enemy.x + 4, enemy.y + 4)
+
+    if enemy.mission == "attack" then
+        -- randomly picks another enemy to attack, enrage
+        if rnd() < 0.5 then
+            pickattack()
+        end
+    end
 end

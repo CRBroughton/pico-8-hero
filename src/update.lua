@@ -59,10 +59,8 @@ function update_game()
                 sfx(3)
                 enemy.flash = 2
                 if enemy.hp <= 0 then
-                    del (enemies, enemy)
-                    sfx(2)
-                    score += 1
-                    createparticle(enemy.x + 4, enemy.y + 4)
+                    killed(enemy)
+
                 end
             end
         end
@@ -132,7 +130,7 @@ function update_game()
     end
 
     -- picking enemy to attack player
-    pickenemy()
+    picktimer()
 
     -- Animates the ships flame
     ship.flame = ship.flame + 1
