@@ -1,7 +1,11 @@
 function performenemymission(enemy)
+    if enemy.wait > 0 then
+        enemy.wait -= 1
+        return
+    end
     if enemy.mission == "flyin" then
         -- fly into the scene
-        enemy.y += 1
+        enemy.y += 3
         if enemy.y  >= enemy.posy then
             enemy.mission = "protect"
         end

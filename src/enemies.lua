@@ -1,10 +1,10 @@
 function spawnwave()
     if wave == 1 then
         placeenemies({
-            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
         })
     elseif wave == 2 then
         placeenemies({
@@ -35,7 +35,7 @@ function placeenemies(level)
         local lineofenemies = level[y]
         for x = 1, 10 do
             if lineofenemies[x] != 0 then
-                spawnenemy(lineofenemies[x], x * 12 - 6, 4 + y * 12)
+                spawnenemy(lineofenemies[x], x * 12 - 6, 4 + y * 12, x * 2)
             end
         end
     end
@@ -59,13 +59,15 @@ function nextwave()
     end
 end
 
-function spawnenemy(enemytype, enemyx, enemyy)
+function spawnenemy(enemytype, enemyx, enemyy, enemywait)
     local enemy = makesprite()
     enemy.x = enemyx
     enemy.y = enemyy - 66
 
     enemy.posx = enemyx
     enemy.posy = enemyy
+
+    enemy.wait = enemywait
 
     enemy.mission = "flyin"
 
