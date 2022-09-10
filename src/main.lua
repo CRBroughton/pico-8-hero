@@ -64,6 +64,7 @@ function startgame()
     score = 0
 
     attackfreq = 60
+    nextfire = 0
 
     stars = {}
 
@@ -78,6 +79,7 @@ function startgame()
 
     bullettime = 0
     bullets = {}
+    enemybullets = {}
 
     enemies = {}
 

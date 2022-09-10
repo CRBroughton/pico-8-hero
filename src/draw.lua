@@ -81,6 +81,11 @@ function draw_game()
         end
     end
 
+    -- drawing enemy bullets
+    for bullet in all(enemybullets) do
+        drawsprite(bullet)
+    end
+
     -- draws the scoreboard
     print("score: " .. score, 40, 1, 12)
 
