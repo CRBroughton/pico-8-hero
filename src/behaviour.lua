@@ -81,7 +81,7 @@ function pickenemy()
 
         local enemy = enemies[index]
 
-        if enemy.mission == "protect" then
+        if enemy and enemy.mission == "protect" then
             enemy.mission = "attack"
             enemy.animationspeed *= 3
             enemy.wait = 60
