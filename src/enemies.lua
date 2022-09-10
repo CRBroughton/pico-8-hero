@@ -1,4 +1,5 @@
 function spawnwave()
+    sfx(28)
     if wave == 1 then
         placeenemies({
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -61,7 +62,7 @@ end
 
 function spawnenemy(enemytype, enemyx, enemyy, enemywait)
     local enemy = makesprite()
-    enemy.x = enemyx
+    enemy.x = enemyx * 1.25 - 16
     enemy.y = enemyy - 66
 
     enemy.posx = enemyx
