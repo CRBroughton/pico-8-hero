@@ -129,6 +129,9 @@ function update_game()
         return
     end
 
+    -- picking enemy to attack player
+    pickenemy()
+
     -- Animates the ships flame
     ship.flame = ship.flame + 1
     if ship.flame > 9 then
