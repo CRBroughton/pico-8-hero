@@ -10,6 +10,7 @@ function performenemymission(enemy)
 
         if abs(enemy.y - enemy.posy) < 0.7 then
             enemy.y = enemy.posy
+            enemy.x = enemy.posx
             enemy.mission = "protect"
         end
     elseif enemy.mission == "protect" then
