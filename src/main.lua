@@ -64,6 +64,7 @@ function startgame()
     score = 0
 
     attackfreq = 60
+    nextfire = 0
 
     stars = {}
 

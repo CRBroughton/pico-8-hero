@@ -73,8 +73,9 @@ function picktimer()
         return
     end
 
-    if time % 30 == 0 then
+    if time > nextfire then
         pickfire()
+        nextfire = time + 20 + rnd(20)
     end
 
     -- every 2 seconds
