@@ -1,19 +1,32 @@
 function spawnwave()
     if wave == 1 then
-        -- spawnenemy(1)
         placeenemies({
-            { 1, 1, 2, 2, 3, 3, 2, 2, 0, 1 },
-            { 1, 1, 2, 2, 1, 1, 2, 2, 0, 1 },
-            { 3, 1, 2, 2, 1, 1, 2, 2, 0, 3 },
-            { 2, 2, 2, 2, 2, 2, 2, 2, 0, 2 }
-            })
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+        })
     elseif wave == 2 then
-        -- spawnenemy(2)
+        placeenemies({
+            { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
+            { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
+            { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
+            { 1, 1, 2, 2, 2, 2, 2, 2, 1, 1 },
+        })
     elseif wave == 3 then
-        -- spawnenemy(3)
+        placeenemies({
+            { 3, 3, 0, 2, 2, 2, 2, 0, 3, 3 },
+            { 3, 3, 0, 2, 2, 2, 2, 0, 3, 3 },
+            { 3, 3, 0, 1, 1, 1, 1, 0, 3, 3 },
+            { 3, 3, 0, 2, 0, 0, 2, 0, 3, 3 },
+        })
     elseif wave == 4 then
-        -- spawnenemy(4)
-    end
+        placeenemies({
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        })
 end
 
 function placeenemies(level)
@@ -53,22 +66,22 @@ function spawnenemy(enemytype, enemyx, enemyy)
     if enemytype == nil or enemytype == 1 then
         -- green enemy
         enemy.sprite = 21
-        enemy.hp = 3
+        enemy.hp = 1
         enemy.animation = {21, 22, 23, 24}
     elseif enemytype == 2 then
         -- red enemy
         enemy.sprite = 148
-        enemy.hp = 5
+        enemy.hp = 1
         enemy.animation = {148, 149}
     elseif enemytype == 3 then
         -- spinning enemy
         enemy.sprite = 184
-        enemy.hp = 5
+        enemy.hp = 1
         enemy.animation = {184, 185, 186, 187}
     elseif enemytype == 4 then
         -- boss
         enemy.sprite = 208
-        enemy.hp = 5
+        enemy.hp = 1
         enemy.animation = {208, 210}
         enemy.width = 2
         enemy.height = 2
