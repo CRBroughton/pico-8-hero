@@ -35,7 +35,7 @@ function placeenemies(level)
         local lineofenemies = level[y]
         for x = 1, 10 do
             if lineofenemies[x] != 0 then
-                spawnenemy(lineofenemies[x], x * 12 - 6, 4 + y * 12, x * 2)
+                spawnenemy(lineofenemies[x], x * 12 - 6, 4 + y * 12, x * 3)
             end
         end
     end

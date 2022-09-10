@@ -5,7 +5,7 @@ function performenemymission(enemy)
     end
     if enemy.mission == "flyin" then
         -- fly into the scene
-        enemy.y += 3
+        enemy.y += (enemy.posy - enemy.y) / 7
         if enemy.y  >= enemy.posy then
             enemy.mission = "protect"
         end
