@@ -1,12 +1,21 @@
 function spawnwave()
     if wave == 1 then
-        spawnenemy(1)
+        -- spawnenemy(1)
+        placeenemies()
     elseif wave == 2 then
-        spawnenemy(2)
+        -- spawnenemy(2)
     elseif wave == 3 then
-        spawnenemy(3)
+        -- spawnenemy(3)
     elseif wave == 4 then
-        spawnenemy(4)
+        -- spawnenemy(4)
+    end
+end
+
+function placeenemies()
+    for y = 1, 4 do
+        for x = 1, 10 do
+            spawnenemy(1, x * 12 - 6, 4 + y * 12)
+        end
     end
 end
 
@@ -28,15 +37,15 @@ function nextwave()
     end
 end
 
-function spawnenemy(enemytype)
+function spawnenemy(enemytype, enemyx, enemyy)
     local enemy = makesprite()
-    enemy.x = rnd(120)
-    enemy.y = -8
+    enemy.x = enemyx
+    enemy.y = enemyy
 
     if enemytype == nil or enemytype == 1 then
         -- green enemy
         enemy.sprite = 21
-        enemy.hp = 5
+        enemy.hp = 3
         enemy.animation = {21, 22, 23, 24}
     elseif enemytype == 2 then
         -- red enemy
