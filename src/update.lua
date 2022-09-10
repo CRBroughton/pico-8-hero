@@ -72,7 +72,7 @@ function update_game()
     for enemy in all(enemies) do
         -- enemy mission
         performenemymission(enemy)
-        enemy.frame += 0.5
+        enemy.frame += enemy.animationspeed
         -- Iterates over the animation array
         if flr(enemy.frame) > #enemy.animation then
             enemy.frame = 1
@@ -80,8 +80,10 @@ function update_game()
         enemy.sprite = enemy.animation[flr(enemy.frame)]
 
         -- enemy cleanup
-        if enemy.y > 128 then
-            del(enemies, enemy)
+        if enemy.mission != "flyin" then
+            if enemy.y > 128 or enemy.x < -8 or enemy.x > 128 then
+                del(enemies, enemy)
+            end
         end
     end
 

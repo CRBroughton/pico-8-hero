@@ -71,9 +71,12 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
 
     enemy.posx = enemyx
     enemy.posy = enemyy
+    
+    enemy.type = enemytype
 
     enemy.wait = enemywait
 
+    enemy.animationspeed = 0.4
     enemy.mission = "flyin"
 
     if enemytype == nil or enemytype == 1 then

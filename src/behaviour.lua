@@ -16,7 +16,55 @@ function performenemymission(enemy)
         -- stay up
     elseif enemy.mission == "attack" then
         -- attack the player
-        enemy.y += 1.7
+        if enemy.type == 1 then
+            -- green
+            enemy.sy = 1.7
+            enemy.sx = sin(time / 45)
+
+            -- boost enemy towards the center if
+            -- on the edge of the screen
+            if enemy.x < 32 then
+                enemy.sx += 1 - (enemy.x / 32)
+            end
+            if enemy.x > 88 then
+                enemy.sx -= (enemy.x - 88) /32
+            end
+        elseif enemy.type == 2 then
+            --red
+            enemy.sy = 2.5
+            enemy.sx = sin(time / 20)
+
+            -- boost enemy towards the center if
+            -- on the edge of the screen
+            if enemy.x < 32 then
+                enemy.sx += 1 - (enemy.x / 32)
+            end
+            if enemy.x > 88 then
+                enemy.sx -= (enemy.x - 88) /32
+            end
+        elseif enemy.type == 3 then
+            -- spinner
+            if enemy.sx == 0 then
+                --flying down
+                enemy.sy = 2
+                -- move towards player
+                if ship.y <= enemy.y then
+                    enemy.sy = 0
+                    if ship.x < enemy.x then
+                        enemy.sx -= 1
+                    else
+                        enemy.sx = 1
+                    end
+                end
+            end
+        elseif enemy.type == 4 then
+            -- yellow
+            enemy.sy = 0.35
+            if enemy.y > 110 then
+                enemy.sy = 1
+            end
+        end
+        move(enemy)
     end
 end
 
@@ -35,6 +83,14 @@ function pickenemy()
 
         if enemy.mission == "protect" then
             enemy.mission = "attack"
+            enemy.animationspeed *= 3
+            enemy.wait = 60
+            enemy.shake = 60
         end
     end
+end
+
+function move(obj)
+    obj.x += obj.sx
+    obj.y += obj.sy
 end
