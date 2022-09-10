@@ -26,8 +26,12 @@ function pickenemy()
     end
 
     -- every 2 seconds
-    if time % 60 == 0 then
-        local enemy = rnd(enemies)
+    if time % attackfreq == 0 then
+        local max = min(10, #enemies)
+        local index = flr(rnd(max))
+        index = #enemies - index
+
+        local enemy = enemies[index]
 
         if enemy.mission == "protect" then
             enemy.mission = "attack"
