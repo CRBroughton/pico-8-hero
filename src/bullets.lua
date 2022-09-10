@@ -11,4 +11,5 @@ function fire(enemy)
     bullet.bulletmode = true
     enemy.flash = 4
     add(enemybullets, bullet)
+    sfx(29)
 end
