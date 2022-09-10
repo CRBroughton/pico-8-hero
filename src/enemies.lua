@@ -27,6 +27,7 @@ function spawnwave()
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
         })
+    end
 end
 
 function placeenemies(level)
