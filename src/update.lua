@@ -141,7 +141,7 @@ function update_game()
     if ship.lives <= 0 then
         mode = "over"
         -- stops the player from spamming fire button if dead
-        lockout = time + 30
+        lockout = gametime + 30
         music(6)
         return
     end
@@ -186,7 +186,7 @@ end
 
 function update_over() 
     -- stops the player from spamming fire button if dead
-    if time < lockout then
+    if gametime < lockout then
         return
     end
     if btn(4) == false and btn(5) == false then
@@ -202,7 +202,7 @@ end
 
 function update_win()
     -- stops the player from spamming fire button if dead
-    if time < lockout then
+    if gametime < lockout then
         return
     end
     if btn(4) == false and btn(5) == false then

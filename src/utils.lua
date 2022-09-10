@@ -3,7 +3,7 @@ function drawsprite(sprite)
     local spritey = sprite.y
     if sprite.shake > 0 then
         sprite.shake -= 1
-        if time % 4 < 2 then
+        if gametime % 4 < 2 then
             spritex += 1
         end
     end
