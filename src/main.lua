@@ -5,7 +5,7 @@ function _init()
     mode = "start"
     startscreen()
     blinkt = 1
-    time = 0
+    gametime = 0
 
 end
 
@@ -24,7 +24,7 @@ function _draw()
 end
 
 function _update()
-    time += 1
+    gametime += 1
     blinkt += 1
     if mode == "game" then
         update_game()
@@ -45,7 +45,7 @@ function startscreen()
 end
 
 function startgame() 
-    time = 0
+    gametime = 0
     lockout = 0
     wave = 0
     nextwave()
@@ -63,6 +63,9 @@ function startgame()
 
     score = 0
 
+    attackfreq = 60
+    nextfire = 0
+
     stars = {}
 
     -- Add stars into the stars arrays
@@ -76,6 +79,7 @@ function startgame()
 
     bullettime = 0
     bullets = {}
+    enemybullets = {}
 
     enemies = {}
 
