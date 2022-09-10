@@ -3,7 +3,9 @@ function drawsprite(sprite)
     local spritey = sprite.y
     if sprite.shake > 0 then
         sprite.shake -= 1
-        spritex += sin(time / 2.5)
+        if time % 4 < 2 then
+            spritex += 1
+        end
     end
     spr(sprite.sprite, spritex, spritey, sprite.width, sprite.height)
 end
@@ -82,7 +84,7 @@ function particle_age_red(age)
     if age > 5 then
         particlecolour = 10
     end
-    
+
     if age > 7 then
         particlecolour = 9
     end
@@ -106,7 +108,7 @@ function particle_age_blue(age)
     if age > 5 then
         particlecolour = 6
     end
-    
+
     if age > 7 then
         particlecolour = 12
     end
