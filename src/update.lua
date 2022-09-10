@@ -29,6 +29,7 @@ function update_game()
             bullet.y = ship.y - 3
             bullet.sprite = 16
             bullet.collisionwidth = 6
+            bullet.sy = -4
 
             add(bullets, bullet)
 
@@ -41,7 +42,7 @@ function update_game()
 
     -- Animates the bullets
     for bullet in all(bullets) do
-        bullet.y -= 2
+        move(bullet)
 
         if bullet.y < -8 then
             del(bullets, bullet)

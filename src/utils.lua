@@ -7,6 +7,10 @@ function drawsprite(sprite)
             spritex += 1
         end
     end
+    if sprite.bulletmode then
+        spritex -= 2
+        spritey -= 2
+    end
     spr(sprite.sprite, spritex, spritey, sprite.width, sprite.height)
 end
 
