@@ -6,10 +6,11 @@ function _init()
     startscreen()
     blinkt = 1
     gametime = 0
-
+    shake = 0
 end
 
 function _draw()
+    shakescreen()
     if mode == "game" then
         draw_game()
     elseif mode == "start" then

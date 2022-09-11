@@ -190,3 +190,19 @@ function makesprite()
     }
     return sprite
 end
+
+function shakescreen()
+    local shakex = rnd(shake) - (shake / 2)
+    local shakey = rnd(shake) - (shake / 2)
+    camera(shakex, shakey)
+    shake -= 1
+
+    if shake > 10 then
+        shake *= 0.9
+    else
+        shake -= 1
+        if shake < 1 then
+            shake = 0
+        end
+    end
+end
