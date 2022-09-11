@@ -216,3 +216,18 @@ function shakescreen()
         end
     end
 end
+
+function popfloat(fltext, flx, fly)
+    local float = {}
+
+    float.x = flx
+    float.y = fly
+    float.text = fltext
+    float.age = 0
+
+    add(floats, float)
+end
+
+function cprint(text, x, y, colour)
+    print(text, x - #text * 2, y, colour)
+end

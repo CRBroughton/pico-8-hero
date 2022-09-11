@@ -150,6 +150,7 @@ function killed(enemy)
             pickattack()
         end
         cherrychance = 0.2
+        popfloat("100", enemy.x + 4, enemy.y + 4)
     end
     if rnd() < 0.1 then
         droppickup(enemy.x, enemy.y)
@@ -174,6 +175,7 @@ function pickuplogic(pickup)
             ship.lives += 1
             sfx(31)
             cherries = 0
+            popfloat("1up!", pickup.x + 4, pickup.y + 4)
         else
             score += 10
             cherries = 0

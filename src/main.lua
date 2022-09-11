@@ -94,4 +94,6 @@ function startgame()
 
     pickups = {} 
 
+    floats = {}
+
 end
