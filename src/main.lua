@@ -64,6 +64,7 @@ function startgame()
     ship.muzzle = 0
 
     score = 0
+    cherries = 0
 
     attackfreq = 60
     nextfire = 0
@@ -90,5 +91,7 @@ function startgame()
     particles = {}
 
     waves = {}
+
+    pickups = {} 
 
 end

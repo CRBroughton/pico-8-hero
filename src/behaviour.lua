@@ -142,13 +142,22 @@ function killed(enemy)
     sfx(2)
     score += 1
     createparticle(enemy.x + 4, enemy.y + 4)
-
+    droppickup(enemy.x, enemy.y)
     if enemy.mission == "attack" then
         -- randomly picks another enemy to attack, enrage
         if rnd() < 0.5 then
             pickattack()
         end
     end
+end
+
+function droppickup(pickx, picky)
+    local pickup = makesprite()
+    pickup.x = pickx
+    pickup.y = picky
+    pickup.sy = 0.5
+    pickup.sprite = 48
+    add(pickups, pickup)
 end
 
 function animate(enemy)

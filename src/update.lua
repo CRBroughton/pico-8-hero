@@ -58,6 +58,14 @@ function update_game()
         end
     end
 
+    -- Animates the pickups
+    for pickup in all(pickups) do
+        move(pickup)
+        if pickup.y > 128 then
+            del(pickups, pickup)
+        end
+    end
+
     -- bullet collision
     for enemy in all(enemies) do
         for bullet in all(bullets) do
@@ -136,6 +144,14 @@ function update_game()
                 sfx(1)
                 ship.invul = 30
             end
+        end
+    end
+
+    -- Collision for the pickups
+    for pickup in all(pickups) do
+        if iscolliding(pickup, ship) then
+            del(pickups, pickup)
+            cherries += 1
         end
     end
 

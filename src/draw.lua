@@ -49,6 +49,11 @@ function draw_game()
         end
     end
 
+    -- draw pickups
+    for pickup in all(pickups) do
+        drawsprite(pickup)
+    end
+
     --draw particles
     for particle in all(particles) do
         local particlecolour = 7
@@ -97,6 +102,9 @@ function draw_game()
             spr(14, i * 9 - 8, 1)
         end
     end
+
+    spr(48, 108, 0)
+    print(cherries, 118, 1, 14)
 end
 
 function draw_start()
