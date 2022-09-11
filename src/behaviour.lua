@@ -165,6 +165,24 @@ function droppickup(pickx, picky)
     add(pickups, pickup)
 end
 
+function pickuplogic(pickup)
+    cherries += 1
+    small_wave(pickup.x + 4, pickup.y + 4, 14)
+
+    if cherries >= 10 then
+        if ship.lives < 4 then
+            ship.lives += 1
+            sfx(31)
+            cherries = 0
+        else
+            score += 10
+            cherries = 0
+        end
+    else
+        sfx(30)
+    end
+end
+
 function animate(enemy)
     enemy.frame += enemy.animationspeed
     if flr(enemy.frame) > #enemy.animation then
