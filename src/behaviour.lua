@@ -142,7 +142,9 @@ function killed(enemy)
     sfx(2)
     score += 1
     createparticle(enemy.x + 4, enemy.y + 4)
-    droppickup(enemy.x, enemy.y)
+    if rnd() < 0.1 then
+        droppickup(enemy.x, enemy.y)
+    end
     if enemy.mission == "attack" then
         -- randomly picks another enemy to attack, enrage
         if rnd() < 0.5 then

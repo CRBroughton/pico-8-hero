@@ -14,6 +14,13 @@ function drawsprite(sprite)
     spr(sprite.sprite, spritex, spritey, sprite.width, sprite.height)
 end
 
+function drawoutline(sprite)
+    spr(sprite.sprite, sprite.x + 1, sprite.y, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x - 1, sprite.y, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x, sprite.y + 1, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x, sprite.y - 1, sprite.width, sprite.height)
+end
+
 function iscolliding(spritea, spriteb)
     local a_left = spritea.x
     local a_top = spritea.y
@@ -131,13 +138,16 @@ function particle_age_blue(age)
     return particlecolour
 end
 
-function small_wave(wavex, wavey)
+function small_wave(wavex, wavey, colour)
+    if colour == nil then
+        colour = 9
+    end
     local wave = {
         x = wavex,
         y = wavey,
         r = 3,
         mr = 6,
-        colour = 9,
+        colour = colour,
         speed = 1
     }
 

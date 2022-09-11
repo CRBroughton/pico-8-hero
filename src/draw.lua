@@ -15,6 +15,21 @@ function draw_game()
         end
     end
 
+    -- draw pickups
+    for pickup in all(pickups) do
+        -- flashes the sprite outline white
+        local colour = 7
+        if gametime % 4 < 2 then
+            colour = 14
+        end
+        for i = 1, 15 do
+            pal(i, colour)
+        end
+        drawoutline(pickup)
+        pal()
+        drawsprite(pickup)
+    end
+
     -- draw enemies
     for enemy in all(enemies) do
         if enemy.flash > 0 then
@@ -47,11 +62,6 @@ function draw_game()
         if wave.r > wave.mr then
             del(waves, wave)
         end
-    end
-
-    -- draw pickups
-    for pickup in all(pickups) do
-        drawsprite(pickup)
     end
 
     --draw particles

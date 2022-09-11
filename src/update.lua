@@ -153,6 +153,7 @@ function update_game()
             del(pickups, pickup)
             cherries += 1
             sfx(30)
+            small_wave(pickup.x + 4, pickup.y + 4, 14)
         end
     end
 
