@@ -15,6 +15,21 @@ function draw_game()
         end
     end
 
+    -- draw pickups
+    for pickup in all(pickups) do
+        -- flashes the sprite outline white
+        local colour = 7
+        if gametime % 4 < 2 then
+            colour = 14
+        end
+        for i = 1, 15 do
+            pal(i, colour)
+        end
+        drawoutline(pickup)
+        pal()
+        drawsprite(pickup)
+    end
+
     -- draw enemies
     for enemy in all(enemies) do
         if enemy.flash > 0 then
@@ -97,6 +112,9 @@ function draw_game()
             spr(14, i * 9 - 8, 1)
         end
     end
+
+    spr(48, 108, 0)
+    print(cherries, 118, 1, 14)
 end
 
 function draw_start()

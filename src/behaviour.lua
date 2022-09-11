@@ -107,13 +107,23 @@ end
 function pickfire()
     local max = min(10, #enemies)
     local index = flr(rnd(max))
+
+    for enemy in all(enemies) do
+        if enemy.type == 4 and enemy.mission == "protect" then
+            if rnd() < 0.5 then
+                firespread(enemy, 12, 1.3, rnd())
+                return
+            end
+        end
+    end
+
     index = #enemies - index
 
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
         if enemy.type == 4 then
-            firespread(enemy, 8, 1.3, rnd())
+            firespread(enemy, 12, 1.3, rnd())
         elseif enemy.type == 2 then
             aimfire(enemy, 2)
         else
@@ -132,13 +142,24 @@ function killed(enemy)
     sfx(2)
     score += 1
     createparticle(enemy.x + 4, enemy.y + 4)
-
+    if rnd() < 0.1 then
+        droppickup(enemy.x, enemy.y)
+    end
     if enemy.mission == "attack" then
         -- randomly picks another enemy to attack, enrage
         if rnd() < 0.5 then
             pickattack()
         end
     end
+end
+
+function droppickup(pickx, picky)
+    local pickup = makesprite()
+    pickup.x = pickx
+    pickup.y = picky
+    pickup.sy = 0.5
+    pickup.sprite = 48
+    add(pickups, pickup)
 end
 
 function animate(enemy)

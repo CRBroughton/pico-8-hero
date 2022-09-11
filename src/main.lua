@@ -48,7 +48,8 @@ end
 function startgame() 
     gametime = 0
     lockout = 0
-    wave = 1
+    wave = 0
+    lastwave = 9
     nextwave()
     ship = makesprite()
     ship.lives = 4
@@ -63,6 +64,7 @@ function startgame()
     ship.muzzle = 0
 
     score = 0
+    cherries = 0
 
     attackfreq = 60
     nextfire = 0
@@ -89,5 +91,7 @@ function startgame()
     particles = {}
 
     waves = {}
+
+    pickups = {} 
 
 end
