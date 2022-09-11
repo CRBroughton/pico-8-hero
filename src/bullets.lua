@@ -56,4 +56,6 @@ function cherrybomb(cherries)
     big_wave(ship.x + 3, ship.y + 3)
     shake = 5
     muzzle = 5
+    ship.invul = 30
+    sfx(33)
 end
