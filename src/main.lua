@@ -48,7 +48,8 @@ end
 function startgame() 
     gametime = 0
     lockout = 0
-    wave = 1
+    wave = 0
+    lastwave = 9
     nextwave()
     ship = makesprite()
     ship.lives = 4
