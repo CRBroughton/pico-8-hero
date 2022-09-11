@@ -117,7 +117,7 @@ function draw_game()
     end
 
     -- draws the scoreboard
-    print("score: " .. score, 40, 1, 12)
+    print("score: " .. score, 70, 2, 12)
 
     -- draws the health hearts
     for i = 1, ship.max_lives do
@@ -128,8 +128,8 @@ function draw_game()
         end
     end
 
-    spr(48, 108, 0)
-    print(cherries, 118, 1, 14)
+    spr(48, 55, 0)
+    print(cherries, 65, 2, 14)
 end
 
 function draw_start()
