@@ -221,17 +221,17 @@ function pickuplogic(pickup)
     cherries += 1
     small_wave(pickup.x + 4, pickup.y + 4, 14)
 
-    if cherries >= 10 then
-        if ship.lives < 4 then
+    if cherries >= 5 then
+        if ship.lives < ship.max_lives then
             ship.lives += 1
             sfx(31)
-            cherries = 0
+            cherries = cherries - 5
             popfloat("1up!", pickup.x + 4, pickup.y + 4)
         else
             score += 50
             popfloat(makescore(50), pickup.x + 4, pickup.y + 4)
             sfx(30)
-            cherries = 0
+            cherries = 5
         end
     else
         sfx(30)
