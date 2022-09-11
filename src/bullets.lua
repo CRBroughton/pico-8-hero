@@ -19,6 +19,7 @@ function fire(enemy, angle, speed)
     enemy.flash = 4
     add(enemybullets, bullet)
     sfx(29)
+    return bullet
 end
 
 function firespread(enemy, number, speed, base)
@@ -28,4 +29,12 @@ function firespread(enemy, number, speed, base)
     for i = 1, number do
         fire(enemy, 1 / number * i + base, speed)
     end
+end
+
+function aimfire(enemy, speed)
+    local bullet = fire(enemy, 0, speed)
+    local angle = atan2((ship.y + 4)  - bullet.y, (ship.x + 4) - bullet.x)
+
+    bullet.sy = cos(angle) * speed
+    bullet.sx = sin(angle) * speed
 end

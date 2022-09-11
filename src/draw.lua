@@ -120,7 +120,7 @@ end
 
 function draw_win()
     draw_game()
-    print("Congratulations", 40, 40, 2)
+    print("congratulations", 40, 40, 2)
     print("press either z or x key", 20, 80, blink())
     print("to continue", 45, 90, 7)
 end
