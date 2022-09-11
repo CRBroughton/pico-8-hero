@@ -107,13 +107,23 @@ end
 function pickfire()
     local max = min(10, #enemies)
     local index = flr(rnd(max))
+
+    for enemy in all(enemies) do
+        if enemy.type == 4 and enemy.mission == "protect" then
+            if rnd() < 0.5 then
+                firespread(enemy, 12, 1.3, rnd())
+                return
+            end
+        end
+    end
+
     index = #enemies - index
 
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
         if enemy.type == 4 then
-            firespread(enemy, 8, 1.3, rnd())
+            firespread(enemy, 12, 1.3, rnd())
         elseif enemy.type == 2 then
             aimfire(enemy, 2)
         else
