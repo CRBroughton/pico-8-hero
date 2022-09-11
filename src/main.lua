@@ -6,10 +6,11 @@ function _init()
     startscreen()
     blinkt = 1
     gametime = 0
-
+    shake = 0
 end
 
 function _draw()
+    shakescreen()
     if mode == "game" then
         draw_game()
     elseif mode == "start" then
@@ -47,7 +48,7 @@ end
 function startgame() 
     gametime = 0
     lockout = 0
-    wave = 0
+    wave = 1
     nextwave()
     ship = makesprite()
     ship.lives = 4

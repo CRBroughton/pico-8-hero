@@ -64,7 +64,7 @@ function performenemymission(enemy)
             if enemy.y > 110 then
                 enemy.sy = 1
             else 
-                if gametime % 30 == 0 then
+                if gametime % 25 == 0 then
                     firespread(enemy, 8, 1, rnd())
                 end
             end
@@ -112,8 +112,13 @@ function pickfire()
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
-        -- fire(enemy, 0.25, 2)
-        firespread(enemy, 8, 2)
+        if enemy.type == 4 then
+            firespread(enemy, 8, 1.3, rnd())
+        elseif enemy.type == 2 then
+            aimfire(enemy, 2)
+        else
+            fire(enemy, 0, 2)
+        end
     end
 end
 

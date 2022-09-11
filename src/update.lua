@@ -117,6 +117,7 @@ function update_game()
             if iscolliding(enemy, ship) then
                 createparticle(ship.x + 4, ship.y + 4, true)
                 ship.lives -= 1
+                shake = 12
                 sfx(1)
                 ship.invul = 30
             end
@@ -131,6 +132,7 @@ function update_game()
             if iscolliding(bullet, ship) then
                 createparticle(ship.x + 4, ship.y + 4, true)
                 ship.lives -= 1
+                shake = 12
                 sfx(1)
                 ship.invul = 30
             end
