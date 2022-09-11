@@ -152,6 +152,7 @@ function update_game()
         if iscolliding(pickup, ship) then
             del(pickups, pickup)
             cherries += 1
+            sfx(30)
         end
     end
 
