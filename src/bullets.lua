@@ -38,3 +38,22 @@ function aimfire(enemy, speed)
     bullet.sy = cos(angle) * speed
     bullet.sx = sin(angle) * speed
 end
+
+function cherrybomb(cherries)
+    local spacing = 0.25 / (cherries * 2)
+    for i = 1, cherries * 2 do
+        local angle = 0.375 + spacing * i
+        local bullet = makesprite()
+        bullet.x = ship.x
+        bullet.y = ship.y - 3
+        bullet.sprite = 17
+        bullet.dmg = 3
+        bullet.sy = cos(angle) * 4
+        bullet.sx = sin(angle) * 4
+
+        add(bullets, bullet)
+    end
+    big_wave(ship.x + 3, ship.y + 3)
+    shake = 5
+    muzzle = 5
+end

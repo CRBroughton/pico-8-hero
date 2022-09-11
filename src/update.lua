@@ -22,6 +22,15 @@ function update_game()
          ship.vspeed = -2
     end
 
+    if btnp(4) then
+        if cherries > 0 then
+            cherrybomb(cherries)
+            cherries = 0
+        else
+            sfx(32)
+        end
+    end
+
     if btn(5) then
         if bullettime <= 0 then
             local bullet = makesprite()
@@ -30,6 +39,7 @@ function update_game()
             bullet.sprite = 16
             bullet.collisionwidth = 6
             bullet.sy = -4
+            bullet.dmg = 1
 
             add(bullets, bullet)
 
@@ -73,7 +83,7 @@ function update_game()
                 del (bullets, bullet)
                 small_wave(bullet.x + 4, bullet.y + 4)
                 small_spark(enemy.x + 4, enemy.y + 4)
-                enemy.hp -= 1
+                enemy.hp -= bullet.dmg
                 sfx(3)
                 enemy.flash = 2
                 if enemy.hp <= 0 then
