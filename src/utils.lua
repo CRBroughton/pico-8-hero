@@ -14,6 +14,13 @@ function drawsprite(sprite)
     spr(sprite.sprite, spritex, spritey, sprite.width, sprite.height)
 end
 
+function drawoutline(sprite)
+    spr(sprite.sprite, sprite.x + 1, sprite.y, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x - 1, sprite.y, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x, sprite.y + 1, sprite.width, sprite.height)
+    spr(sprite.sprite, sprite.x, sprite.y - 1, sprite.width, sprite.height)
+end
+
 function iscolliding(spritea, spriteb)
     local a_left = spritea.x
     local a_top = spritea.y
@@ -131,13 +138,16 @@ function particle_age_blue(age)
     return particlecolour
 end
 
-function small_wave(wavex, wavey)
+function small_wave(wavex, wavey, colour)
+    if colour == nil then
+        colour = 9
+    end
     local wave = {
         x = wavex,
         y = wavey,
         r = 3,
         mr = 6,
-        colour = 9,
+        colour = colour,
         speed = 1
     }
 
@@ -189,4 +199,35 @@ function makesprite()
         collisionheight = 8
     }
     return sprite
+end
+
+function shakescreen()
+    local shakex = rnd(shake) - (shake / 2)
+    local shakey = rnd(shake) - (shake / 2)
+    camera(shakex, shakey)
+    shake -= 1
+
+    if shake > 10 then
+        shake *= 0.9
+    else
+        shake -= 1
+        if shake < 1 then
+            shake = 0
+        end
+    end
+end
+
+function popfloat(fltext, flx, fly)
+    local float = {}
+
+    float.x = flx
+    float.y = fly
+    float.text = fltext
+    float.age = 0
+
+    add(floats, float)
+end
+
+function cprint(text, x, y, colour)
+    print(text, x - #text * 2, y, colour)
 end

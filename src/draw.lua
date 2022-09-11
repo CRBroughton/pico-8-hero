@@ -15,6 +15,36 @@ function draw_game()
         end
     end
 
+    -- Draws floats
+    for float in all(floats) do
+        local colour = 7
+        if gametime % 4 < 2 then
+            colour = 8
+        end
+        cprint(float.text, float.x, float.y, colour)
+        float.y -= 0.5
+        float.age += 1
+
+        if float.age > 60 then
+            del(floats, float)
+        end
+    end
+
+    -- draw pickups
+    for pickup in all(pickups) do
+        -- flashes the sprite outline white
+        local colour = 7
+        if gametime % 4 < 2 then
+            colour = 14
+        end
+        for i = 1, 15 do
+            pal(i, colour)
+        end
+        drawoutline(pickup)
+        pal()
+        drawsprite(pickup)
+    end
+
     -- draw enemies
     for enemy in all(enemies) do
         if enemy.flash > 0 then
@@ -97,30 +127,33 @@ function draw_game()
             spr(14, i * 9 - 8, 1)
         end
     end
+
+    spr(48, 108, 0)
+    print(cherries, 118, 1, 14)
 end
 
 function draw_start()
     cls(1)
-    print("my awesome shmup", 32, 40, 12)
-    print("press either z or x key to start", 0, 80, blink())
+    cprint("my awesome shmup", 64, 40, 12)
+    cprint("press either z or x key to start", 64, 80, blink())
 end
 
 function draw_over()
     draw_game()
-    print("game over", 50, 40, 2)
-    print("press either z or x key", 20, 80, blink())
-    print("to continue", 45, 90, 7)
+    cprint("game over", 64, 40, 2)
+    cprint("press either z or x key", 64, 80, blink())
+    cprint("to continue", 64, 90, 7)
 
 end
 
 function draw_wavetext()
     draw_game()
-    print("wave " .. wave, 52, 40, blink())
+    cprint("wave " .. wave, 64, 40, blink())
 end
 
 function draw_win()
     draw_game()
-    print("Congratulations", 40, 40, 2)
-    print("press either z or x key", 20, 80, blink())
-    print("to continue", 45, 90, 7)
+    cprint("congratulations", 64, 40, 2)
+    cprint("press either z or x key", 64, 80, blink())
+    cprint("to continue", 64, 90, 7)
 end

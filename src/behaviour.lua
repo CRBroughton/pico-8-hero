@@ -64,7 +64,7 @@ function performenemymission(enemy)
             if enemy.y > 110 then
                 enemy.sy = 1
             else 
-                if gametime % 30 == 0 then
+                if gametime % 25 == 0 then
                     firespread(enemy, 8, 1, rnd())
                 end
             end
@@ -107,13 +107,28 @@ end
 function pickfire()
     local max = min(10, #enemies)
     local index = flr(rnd(max))
+
+    for enemy in all(enemies) do
+        if enemy.type == 4 and enemy.mission == "protect" then
+            if rnd() < 0.5 then
+                firespread(enemy, 12, 1.3, rnd())
+                return
+            end
+        end
+    end
+
     index = #enemies - index
 
     local enemy = enemies[index]
 
     if enemy and enemy.mission == "protect" then
-        -- fire(enemy, 0.25, 2)
-        firespread(enemy, 8, 2)
+        if enemy.type == 4 then
+            firespread(enemy, 12, 1.3, rnd())
+        elseif enemy.type == 2 then
+            aimfire(enemy, 2)
+        else
+            fire(enemy, 0, 2)
+        end
     end
 end
 
@@ -126,6 +141,7 @@ function killed(enemy)
     del (enemies, enemy)
     sfx(2)
     score += 1
+    local cherrychance = 0.1
     createparticle(enemy.x + 4, enemy.y + 4)
 
     if enemy.mission == "attack" then
@@ -133,6 +149,39 @@ function killed(enemy)
         if rnd() < 0.5 then
             pickattack()
         end
+        cherrychance = 0.2
+        popfloat("100", enemy.x + 4, enemy.y + 4)
+    end
+    if rnd() < 0.1 then
+        droppickup(enemy.x, enemy.y)
+    end
+end
+
+function droppickup(pickx, picky)
+    local pickup = makesprite()
+    pickup.x = pickx
+    pickup.y = picky
+    pickup.sy = 0.75
+    pickup.sprite = 48
+    add(pickups, pickup)
+end
+
+function pickuplogic(pickup)
+    cherries += 1
+    small_wave(pickup.x + 4, pickup.y + 4, 14)
+
+    if cherries >= 10 then
+        if ship.lives < 4 then
+            ship.lives += 1
+            sfx(31)
+            cherries = 0
+            popfloat("1up!", pickup.x + 4, pickup.y + 4)
+        else
+            score += 10
+            cherries = 0
+        end
+    else
+        sfx(30)
     end
 end
 
