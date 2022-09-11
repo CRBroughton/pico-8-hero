@@ -141,15 +141,18 @@ function killed(enemy)
     del (enemies, enemy)
     sfx(2)
     score += 1
+    local cherrychance = 0.1
     createparticle(enemy.x + 4, enemy.y + 4)
-    if rnd() < 0.1 then
-        droppickup(enemy.x, enemy.y)
-    end
+
     if enemy.mission == "attack" then
         -- randomly picks another enemy to attack, enrage
         if rnd() < 0.5 then
             pickattack()
         end
+        cherrychance = 0.2
+    end
+    if rnd() < 0.1 then
+        droppickup(enemy.x, enemy.y)
     end
 end
 
@@ -157,7 +160,7 @@ function droppickup(pickx, picky)
     local pickup = makesprite()
     pickup.x = pickx
     pickup.y = picky
-    pickup.sy = 0.5
+    pickup.sy = 0.75
     pickup.sprite = 48
     add(pickups, pickup)
 end
