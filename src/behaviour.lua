@@ -21,6 +21,7 @@ function performenemymission(enemy)
 
             if enemy.boss then
                 enemy.mission = "boss1"
+                enemy.phasebegin = gametime
             else
                 enemy.mission = "protect"
             end
