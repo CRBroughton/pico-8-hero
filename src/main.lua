@@ -11,6 +11,7 @@ function _init()
     gametime = 0
     shake = 0
     version = "v1"
+    peekerx = 64
 end
 
 function _draw()

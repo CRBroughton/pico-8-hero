@@ -157,6 +157,13 @@ function draw_start()
     starfield()
     print(version, 1, 1, 1)
 
+    -- peeker
+    spr(21, peekerx, 28 + sin(time() / 3.5) * 4)
+
+    if sin(time() / 3.5) > 0.5 then
+        peekerx = 30 + rnd(60)
+    end
+
     spr(212, 17, 30, 12, 2)
     cprint("short shwave shmup", 64, 45, 6)
 
