@@ -3,7 +3,7 @@ function boss1(enemy)
     local speed = 2
 
     if enemy.sx == 0 or enemy.x >= 93 then
-        enemy.sx -= speed
+        enemy.sx = - speed
     end
 
     if enemy.x <= 3 then
@@ -59,6 +59,7 @@ function boss2(enemy)
             -- transition
             enemy.mission = "boss3"
             enemy.phasebegin = gametime
+            enemy.sy = 0
         end
     end
     -- shooting
@@ -71,14 +72,29 @@ function boss2(enemy)
 end
 
 function boss3(enemy)
+    -- movement
+    local speed = 0.5
+
+    if enemy.sx == 0 or enemy.x >= 93 then
+        enemy.sx = -speed
+    end
+
+    if enemy.x <= 3 then
+        enemy.sx = speed
+    end
     debug = "boss3"
 
+    -- shooting
+    if gametime % 10 == 0 then
+        firespread(enemy, 8, 2, time() / 2)
+    end
+
+    -- transition
     if enemy.phasebegin + 8 * 30 < gametime then
         enemy.mission = "boss4"
         enemy.phasebegin = gametime
     end 
-    -- move(enemy)
-
+    move(enemy)
 end
 
 function boss4(enemy)
