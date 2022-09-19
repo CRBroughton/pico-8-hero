@@ -92,6 +92,8 @@ function boss3(enemy)
     -- transition
     if enemy.phasebegin + 8 * 30 < gametime then
         enemy.mission = "boss4"
+        enemy.subphase = 1
+        enemy.sx = 0
         enemy.phasebegin = gametime
     end 
     move(enemy)
@@ -100,10 +102,39 @@ end
 function boss4(enemy)
     debug = "boss4"
 
-    if enemy.phasebegin + 8 * 30 < gametime then
-        enemy.mission = "boss1"
-        enemy.phasebegin = gametime
-    end 
+    -- movement
+    local speed = 1.5
+    if enemy.subphase == 1 then
+        enemy.sx = speed
+        if enemy.x >= 91 then
+            enemy.subphase = 2
+        end
+    elseif enemy.subphase == 2 then
+        enemy.sx = 0
+        enemy.sy = speed
+
+        if enemy.y >= 100 then
+            enemy.subphase = 3
+        end
+
+    elseif enemy.subphase == 3 then
+        enemy.sx = -speed
+        enemy.sy = 0
+
+        if enemy.x <= 4 then
+            enemy.subphase = 4
+        end
+    elseif enemy.subphase == 4 then
+        enemy.sx = 0
+        enemy.sy = - speed
+
+        if enemy.y <= 25 then
+            -- transition
+            enemy.mission = "boss1"
+            enemy.phasebegin = gametime
+            enemy.sy = 0
+        end
+    end
     move(enemy)
 
 end
