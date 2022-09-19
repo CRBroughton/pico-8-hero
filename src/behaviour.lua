@@ -31,19 +31,19 @@ function performenemymission(enemy)
 
     elseif enemy.mission == "boss1" then
         -- boss mission 1
-        boss1()
+        boss1(enemy)
     elseif enemy.mission == "boss2" then
         -- boss mission 2
-        boss2()
+        boss2(enemy)
     elseif enemy.mission == "boss3" then
         -- boss mission 3
-        boss3()
+        boss3(enemy)
     elseif enemy.mission == "boss4" then
         -- boss mission 4
-        boss4()
+        boss4(enemy)
     elseif enemy.mission == "boss5" then
         -- boss mission 5
-        boss5()
+        boss5(enemy)
     elseif enemy.mission == "attack" then
         -- attack the player
         if enemy.type == 1 then
