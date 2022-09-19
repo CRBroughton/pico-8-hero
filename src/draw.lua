@@ -140,9 +140,9 @@ function draw_game()
             spr(14, i * 9 - 8, 1)
         end
     end
-
-    spr(48, 55, 0)
-    print(cherries, 65, 2, 14)
+    
+    spr(48, 108, 0)
+    print(cherries, 118, 1, 14)
 end
 
 function makescore(val)
