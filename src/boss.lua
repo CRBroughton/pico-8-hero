@@ -19,7 +19,6 @@ function boss1(enemy)
     
 
     -- transition
-    debug = "boss1"
     if enemy.phasebegin + 8 * 30 < gametime then
         enemy.mission = "boss2"
         enemy.phasebegin = gametime
@@ -67,7 +66,6 @@ function boss2(enemy)
     if gametime % 15 == 0 then
         aimfire(enemy, speed)
     end
-    debug = "boss2"
     move(enemy)
 end
 
@@ -82,7 +80,6 @@ function boss3(enemy)
     if enemy.x <= 3 then
         enemy.sx = speed
     end
-    debug = "boss3"
 
     -- shooting
     if gametime % 10 == 0 then
@@ -100,8 +97,6 @@ function boss3(enemy)
 end
 
 function boss4(enemy)
-    debug = "boss4"
-
     -- movement
     local speed = 1.5
     if enemy.subphase == 1 then
@@ -135,6 +130,20 @@ function boss4(enemy)
             enemy.sy = 0
         end
     end
+
+    -- shooting
+    if gametime % 12 == 0 then
+        if enemy.subphase == 1 then
+            fire(enemy, 0, 2)
+        elseif enemy.subphase == 2 then
+            fire(enemy, 0.25, 2)
+        elseif enemy.subphase == 3 then
+            fire(enemy, 0.5, 2)
+        elseif enemy.subphase == 4 then
+            fire(enemy, 0.75, 2)
+        end
+    end
+
     move(enemy)
 
 end
