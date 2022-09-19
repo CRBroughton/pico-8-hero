@@ -48,7 +48,7 @@ function aimfire(enemy, speed)
     bullet.sx = sin(angle) * speed
 end
 
-function cherrybomb(cherries)
+function cherrybomb()
     local spacing = 0.25 / (cherries * 2)
     for i = 1, cherries * 2 do
         local angle = 0.375 + spacing * i
@@ -65,6 +65,7 @@ function cherrybomb(cherries)
     big_wave(ship.x + 3, ship.y + 3)
     shake = 5
     muzzle = 5
-    ship.invul = 30
+    flash = 3
+    ship.invul = 60
     sfx(33)
 end

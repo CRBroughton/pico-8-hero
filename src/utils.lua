@@ -1,3 +1,15 @@
+function makestars()
+    stars = {}
+    -- Add stars into the stars arrays
+    for i = 1, 100 do
+        local newstar = {}
+        newstar.x = flr(rnd(128))
+        newstar.y = flr(rnd(128))
+        newstar.speed =  rnd(1.5) + 0.5
+        add(stars, newstar)
+    end
+end
+
 function drawsprite(sprite)
     local spritex = sprite.x
     local spritey = sprite.y
