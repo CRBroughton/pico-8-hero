@@ -33,14 +33,14 @@ function boss2(enemy)
     local speed = 2
     if enemy.subphase == 1 then
         enemy.sx =- speed
-        if enemy.x <= 3 then
+        if enemy.x <= 4 then
             enemy.subphase = 2
         end
     elseif enemy.subphase == 2 then
         enemy.sx = 0
         enemy.sy = speed
 
-        if enemy.y >= 96 then
+        if enemy.y >= 100 then
             enemy.subphase = 3
         end
 
@@ -48,7 +48,7 @@ function boss2(enemy)
         enemy.sx = speed
         enemy.sy = 0
 
-        if enemy.x >= 93 then
+        if enemy.x >= 91 then
             enemy.subphase = 4
         end
     elseif enemy.subphase == 4 then
