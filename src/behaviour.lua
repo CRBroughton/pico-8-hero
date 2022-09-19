@@ -167,6 +167,14 @@ function move(obj)
 end
 
 function killed(enemy)
+    if enemy.boss then
+        enemy.mission = "boss5"
+        enemy.phasebegin = gametime
+        enemy.ghost = true
+        bullets = {}
+        return
+    end
+
     del (enemies, enemy)
     sfx(2)
     score += 1

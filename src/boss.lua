@@ -148,6 +148,27 @@ function boss4(enemy)
 
 end
 
-function boss5()
+function boss5(enemy)
+    enemy.shake = 10
+    enemy.flash = 10
 
+    if gametime % 8 == 0 then
+        createparticle(enemy.x + rnd(32), enemy.y + rnd(24))
+        sfx(2)
+        shake = 2
+    end
+    if enemy.phasebegin + 2 * 30 < gametime then
+        if gametime % 5 == 0 then
+            createparticle(enemy.x + rnd(32), enemy.y + rnd(24))
+            sfx(2)
+            shake = 2
+        end
+    end
+    -- transition
+    if enemy.phasebegin + 4 * 30 < gametime then
+        createbigparticle(enemy.x + 16, enemy.y + 12)
+        shake = 15
+        enemies = {}
+        sfx(35)
+    end
 end
