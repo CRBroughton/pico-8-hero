@@ -5,16 +5,45 @@ function performenemymission(enemy)
     end
     if enemy.mission == "flyin" then
         -- fly into the scene
-        enemy.x += (enemy.posx - enemy.x) / 7
-        enemy.y += (enemy.posy - enemy.y) / 7
+
+        local directionx = (enemy.posx - enemy.x) / 7
+        local directiony = (enemy.posy - enemy.y) / 7
+
+        if enemy.boss then
+            directiony = min(directiony, 1)
+        end
+        enemy.x += directionx
+        enemy.y += directiony
 
         if abs(enemy.y - enemy.posy) < 0.7 then
             enemy.y = enemy.posy
             enemy.x = enemy.posx
-            enemy.mission = "protect"
+
+            if enemy.boss then
+                enemy.mission = "boss1"
+                enemy.phasebegin = gametime
+            else
+                enemy.mission = "protect"
+            end
         end
     elseif enemy.mission == "protect" then
         -- stay up
+
+    elseif enemy.mission == "boss1" then
+        -- boss mission 1
+        boss1(enemy)
+    elseif enemy.mission == "boss2" then
+        -- boss mission 2
+        boss2(enemy)
+    elseif enemy.mission == "boss3" then
+        -- boss mission 3
+        boss3(enemy)
+    elseif enemy.mission == "boss4" then
+        -- boss mission 4
+        boss4(enemy)
+    elseif enemy.mission == "boss5" then
+        -- boss mission 5
+        boss5(enemy)
     elseif enemy.mission == "attack" then
         -- attack the player
         if enemy.type == 1 then
@@ -138,6 +167,14 @@ function move(obj)
 end
 
 function killed(enemy)
+    if enemy.boss then
+        enemy.mission = "boss5"
+        enemy.phasebegin = gametime
+        enemy.ghost = true
+        bullets = {}
+        return
+    end
+
     del (enemies, enemy)
     sfx(2)
     score += 1

@@ -22,6 +22,11 @@ function drawoutline(sprite)
 end
 
 function iscolliding(spritea, spriteb)
+    if spritea.ghost or spriteb.ghost then
+        return false
+    end
+
+
     local a_left = spritea.x
     local a_top = spritea.y
     local a_right = spritea.x + spritea.collisionwidth - 1
@@ -40,7 +45,7 @@ function iscolliding(spritea, spriteb)
     return true
 end
 
-function createparticle(posx, posy, isblue)
+function createparticle(posx, posy)
     -- central white particle
     local particle = {
         x = posx,
@@ -80,6 +85,53 @@ function createparticle(posx, posy, isblue)
             maxage = 10 + rnd(10),
             size = 1 + rnd(4),
             blue = isblue,
+            spark = true
+        }
+        add(particles, spark)
+    end
+
+    -- creates the big wave around explosion
+    big_wave(posx, posy)
+
+end
+
+function createbigparticle(posx, posy, isblue)
+    -- central white particle
+    local particle = {
+        x = posx,
+        y = posy,
+        speedx = 0,
+        speedy = 0,
+        age = 0,
+        maxage = 0,
+        size = 30,
+    }
+    add(particles, particle)
+
+    -- procedural particles around center
+    for i = 1, 60 do
+        local particle = {
+            x = posx,
+            y = posy,
+            speedx = (rnd() - 0.5) * 12,
+            speedy = (rnd() - 0.5) * 12,
+            age = rnd(2),
+            maxage = 20 + rnd(20),
+            size = 1 + rnd(6),
+        }
+        add(particles, particle)
+    end
+
+    -- sparks
+    for i = 1, 100 do
+        local spark = {
+            x = posx,
+            y = posy,
+            speedx = (rnd() - 0.5) * 30,
+            speedy = (rnd() - 0.5) * 30,
+            age = rnd(2),
+            maxage = 20 + rnd(20),
+            size = 1 + rnd(4),
             spark = true
         }
         add(particles, spark)

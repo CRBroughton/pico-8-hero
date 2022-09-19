@@ -48,7 +48,7 @@ end
 function startgame() 
     gametime = 0
     lockout = 0
-    wave = 0
+    wave = 8
     lastwave = 9
     nextwave()
     ship = makesprite()

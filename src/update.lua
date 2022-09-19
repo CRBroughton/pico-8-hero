@@ -83,9 +83,15 @@ function update_game()
                 del (bullets, bullet)
                 small_wave(bullet.x + 4, bullet.y + 4)
                 small_spark(enemy.x + 4, enemy.y + 4)
-                enemy.hp -= bullet.dmg
+                if enemy.mission != "flyin" then
+                    enemy.hp -= bullet.dmg
+                end
                 sfx(3)
-                enemy.flash = 2
+                if enemy.boss then
+                    enemy.flash = 5
+                else
+                    enemy.flash = 2
+                end
                 if enemy.hp <= 0 then
                     killed(enemy)
 
