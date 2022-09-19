@@ -130,7 +130,7 @@ function draw_game()
     end
 
     -- draws the scoreboard
-    print("score: " .. makescore(score), 40, 2, 12)
+    print("score:" .. makescore(score), 46, 2, 12)
 
     -- draws the health hearts
     for i = 1, ship.max_lives do

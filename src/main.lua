@@ -58,9 +58,9 @@ function startgame()
     lastwave = 9
     nextwave()
     ship = makesprite()
-    ship.lives = 4
+    ship.lives = 5
     ship.invul = 0
-    ship.max_lives = 4
+    ship.max_lives = 5
     ship.x = 60
     ship.y = 90
     ship.vspeed = 1

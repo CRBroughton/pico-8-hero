@@ -66,6 +66,6 @@ function cherrybomb()
     shake = 5
     muzzle = 5
     flash = 3
-    ship.invul = 30
+    ship.invul = 60
     sfx(33)
 end

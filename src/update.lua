@@ -156,7 +156,7 @@ function update_game()
                 ship.lives -= 1
                 shake = 12
                 sfx(1)
-                ship.invul = 30
+                ship.invul = 60
                 flash = 3
             end
         end
@@ -172,7 +172,7 @@ function update_game()
                 ship.lives -= 1
                 shake = 12
                 sfx(1)
-                ship.invul = 30
+                ship.invul = 60
                 flash = 3
             end
         end
