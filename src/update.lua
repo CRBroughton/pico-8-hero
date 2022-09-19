@@ -219,6 +219,7 @@ function update_game()
 end
 
 function update_start()
+    animatestars()
     if btn(4) == false and btn(5) == false then
         buttonreleased = true
     end

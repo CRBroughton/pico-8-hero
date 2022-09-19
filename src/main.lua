@@ -44,6 +44,7 @@ function _update()
 end
 
 function startscreen()
+    makestars()
     mode = "start"
     music(7)
 end
@@ -73,16 +74,8 @@ function startgame()
     firefreq = 20
     nextfire = 0
 
-    stars = {}
 
-    -- Add stars into the stars arrays
-    for i = 1, 100 do
-        local newstar = {}
-        newstar.x = flr(rnd(128))
-        newstar.y = flr(rnd(128))
-        newstar.speed =  rnd(1.5) + 0.5
-        add(stars, newstar)
-    end
+    makestars()
 
     bullettime = 0
     bullets = {}

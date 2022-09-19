@@ -153,7 +153,8 @@ function makescore(val)
 end
 
 function draw_start()
-    cls(1)
+    cls(0)
+    starfield()
     cprint("my awesome shmup", 64, 40, 12)
     if highscore > 0 then
         cprint("highscore: ", 64, 56, 12)
