@@ -51,7 +51,7 @@ end
 function startgame() 
     gametime = 0
     lockout = 0
-    wave = 8
+    wave = 0
     lastwave = 9
     nextwave()
     ship = makesprite()
@@ -59,13 +59,13 @@ function startgame()
     ship.invul = 0
     ship.max_lives = 4
     ship.x = 60
-    ship.y = 60
+    ship.y = 90
     ship.vspeed = 1
     ship.hspeed = 1
     ship.sprite = 2
     ship.flame = 5
     ship.muzzle = 0
-
+    flash = 0
     score = 0
     cherries = 0
 

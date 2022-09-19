@@ -157,6 +157,7 @@ function update_game()
                 shake = 12
                 sfx(1)
                 ship.invul = 30
+                flash = 3
             end
         end
     else 
@@ -172,6 +173,7 @@ function update_game()
                 shake = 12
                 sfx(1)
                 ship.invul = 30
+                flash = 3
             end
         end
     end

@@ -166,6 +166,7 @@ function boss5(enemy)
     end
     -- transition
     if enemy.phasebegin + 6 * 30 < gametime then
+        flash = 3
         score += 100
         popfloat(makescore(100), enemy.x + 16, enemy.y + 6)
         createbigparticle(enemy.x + 16, enemy.y + 12)

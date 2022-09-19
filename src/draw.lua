@@ -1,5 +1,10 @@
 function draw_game()
-    cls(0)
+    if flash > 0 then
+        flash -= 1
+        cls(2)
+    else
+        cls(0)
+    end
     starfield()
     if ship.lives > 0 then
         --invul state for player
