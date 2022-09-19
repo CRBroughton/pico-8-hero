@@ -1,7 +1,11 @@
 function spawnwave()
-    attackfreq = 10
-    sfx(28)
+    if wave < lastwave then
+        sfx(28)
+    else
+        music(10)
+    end
     if wave == 1 then
+        attackfreq = 60
         -- space invaders
         placeenemies({
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },

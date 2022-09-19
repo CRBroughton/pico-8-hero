@@ -20,6 +20,9 @@ function performenemymission(enemy)
             enemy.x = enemy.posx
 
             if enemy.boss then
+                sfx(50)
+                enemy.shake = 20
+                enemy.wait = 28
                 enemy.mission = "boss1"
                 enemy.phasebegin = gametime
             else
@@ -172,6 +175,7 @@ function killed(enemy)
         enemy.phasebegin = gametime
         enemy.ghost = true
         bullets = {}
+        sfx(51)
         return
     end
 
