@@ -6,6 +6,9 @@ function fire(enemy, angle, speed)
     if enemy.type == 4 then
         bullet.x = enemy.x + 7
         bullet.y = enemy.y + 13
+    elseif enemy.boss then
+        bullet.x = enemy.x + 15
+        bullet.y = enemy.y + 23
     end
 
     bullet.sprite = 32
@@ -20,7 +23,7 @@ function fire(enemy, angle, speed)
     if enemy.boss != true then
         enemy.flash = 4
     end
-    
+
     add(enemybullets, bullet)
     sfx(29)
     return bullet
