@@ -1,12 +1,17 @@
 function _init()
     -- Clears the screen
     cls(0)
+    -- save data
+    cartdata("heroshmup")
+    highscore = dget(0)
     -- state machine for game mode
     mode = "start"
     startscreen()
     blinkt = 1
     gametime = 0
     shake = 0
+    version = "v1"
+    peekerx = 64
 end
 
 function _draw()
@@ -41,6 +46,7 @@ function _update()
 end
 
 function startscreen()
+    makestars()
     mode = "start"
     music(7)
 end
@@ -52,33 +58,26 @@ function startgame()
     lastwave = 9
     nextwave()
     ship = makesprite()
-    ship.lives = 6
+    ship.lives = 5
     ship.invul = 0
-    ship.max_lives = 6
+    ship.max_lives = 5
     ship.x = 60
-    ship.y = 100
+    ship.y = 90
     ship.vspeed = 1
     ship.hspeed = 1
     ship.sprite = 2
     ship.flame = 5
     ship.muzzle = 0
-
+    flash = 0
     score = 0
     cherries = 0
 
     attackfreq = 60
+    firefreq = 20
     nextfire = 0
 
-    stars = {}
 
-    -- Add stars into the stars arrays
-    for i = 1, 100 do
-        local newstar = {}
-        newstar.x = flr(rnd(128))
-        newstar.y = flr(rnd(128))
-        newstar.speed =  rnd(1.5) + 0.5
-        add(stars, newstar)
-    end
+    makestars()
 
     bullettime = 0
     bullets = {}

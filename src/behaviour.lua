@@ -5,16 +5,48 @@ function performenemymission(enemy)
     end
     if enemy.mission == "flyin" then
         -- fly into the scene
-        enemy.x += (enemy.posx - enemy.x) / 7
-        enemy.y += (enemy.posy - enemy.y) / 7
+
+        local directionx = (enemy.posx - enemy.x) / 7
+        local directiony = (enemy.posy - enemy.y) / 7
+
+        if enemy.boss then
+            directiony = min(directiony, 1)
+        end
+        enemy.x += directionx
+        enemy.y += directiony
 
         if abs(enemy.y - enemy.posy) < 0.7 then
             enemy.y = enemy.posy
             enemy.x = enemy.posx
-            enemy.mission = "protect"
+
+            if enemy.boss then
+                sfx(50)
+                enemy.shake = 20
+                enemy.wait = 28
+                enemy.mission = "boss1"
+                enemy.phasebegin = gametime
+            else
+                enemy.mission = "protect"
+            end
         end
     elseif enemy.mission == "protect" then
         -- stay up
+
+    elseif enemy.mission == "boss1" then
+        -- boss mission 1
+        boss1(enemy)
+    elseif enemy.mission == "boss2" then
+        -- boss mission 2
+        boss2(enemy)
+    elseif enemy.mission == "boss3" then
+        -- boss mission 3
+        boss3(enemy)
+    elseif enemy.mission == "boss4" then
+        -- boss mission 4
+        boss4(enemy)
+    elseif enemy.mission == "boss5" then
+        -- boss mission 5
+        boss5(enemy)
     elseif enemy.mission == "attack" then
         -- attack the player
         if enemy.type == 1 then
@@ -80,7 +112,7 @@ function picktimer()
 
     if gametime > nextfire then
         pickfire()
-        nextfire = gametime + 20 + rnd(20)
+        nextfire = gametime + firefreq + rnd(firefreq)
     end
 
     -- every 2 seconds
@@ -138,21 +170,39 @@ function move(obj)
 end
 
 function killed(enemy)
+    if enemy.boss then
+        enemy.mission = "boss5"
+        enemy.phasebegin = gametime
+        enemy.ghost = true
+        bullets = {}
+        music(-1)
+        sfx(51)
+        return
+    end
+
     del (enemies, enemy)
     sfx(2)
+
     score += 1
+    local scoremult = 1
     local cherrychance = 0.1
     createparticle(enemy.x + 4, enemy.y + 4)
 
     if enemy.mission == "attack" then
         -- randomly picks another enemy to attack, enrage
+        scoremult = 2
         if rnd() < 0.5 then
             pickattack()
         end
         cherrychance = 0.2
-        popfloat("100", enemy.x + 4, enemy.y + 4)
-        score += 100
     end
+
+    score += enemy.score * scoremult
+
+    if scoremult != 1 then
+        popfloat(makescore(enemy.score * scoremult), enemy.x + 4, enemy.y + 4)
+    end
+
     if rnd() < 0.1 then
         droppickup(enemy.x, enemy.y)
     end
@@ -178,7 +228,9 @@ function pickuplogic(pickup)
             cherries = cherries - 5
             popfloat("1up!", pickup.x + 4, pickup.y + 4)
         else
-            score += 10
+            score += 50
+            popfloat(makescore(50), pickup.x + 4, pickup.y + 4)
+            sfx(30)
             cherries = 5
         end
     else

@@ -6,6 +6,9 @@ function fire(enemy, angle, speed)
     if enemy.type == 4 then
         bullet.x = enemy.x + 7
         bullet.y = enemy.y + 13
+    elseif enemy.boss then
+        bullet.x = enemy.x + 15
+        bullet.y = enemy.y + 23
     end
 
     bullet.sprite = 32
@@ -16,9 +19,15 @@ function fire(enemy, angle, speed)
     bullet.collisionwidth = 2
     bullet.collisionheight = 2
     bullet.bulletmode = true
-    enemy.flash = 4
+
+    if enemy.boss != true then
+        enemy.flash = 4
+        sfx(29)
+    else
+        sfx(34)
+    end
+
     add(enemybullets, bullet)
-    sfx(29)
     return bullet
 end
 
@@ -39,7 +48,7 @@ function aimfire(enemy, speed)
     bullet.sx = sin(angle) * speed
 end
 
-function cherrybomb(cherries)
+function cherrybomb()
     local spacing = 0.25 / (cherries * 2)
     for i = 1, cherries * 2 do
         local angle = 0.375 + spacing * i
@@ -56,6 +65,7 @@ function cherrybomb(cherries)
     big_wave(ship.x + 3, ship.y + 3)
     shake = 5
     muzzle = 5
-    ship.invul = 30
+    flash = 3
+    ship.invul = 60
     sfx(33)
 end

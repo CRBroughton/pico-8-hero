@@ -9,6 +9,8 @@
         "scenes",
         "music",
         "assets",
-        "pickups"
+        "pickups",
+        "boxx",
+        "boss"
     ]
 }
