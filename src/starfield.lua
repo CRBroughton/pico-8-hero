@@ -12,9 +12,13 @@ function starfield()
     end
 end
 
-function animatestars()
+function animatestars(speed)
+    if speed == nil then
+        speed = 1
+    end
+
     for star in all(stars) do
-        star.y += star.speed
+        star.y += star.speed * speed
         if star.y > 128 then
             star.y = star.y - 128
         end

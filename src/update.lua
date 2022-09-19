@@ -209,7 +209,11 @@ function update_game()
         ship.muzzle -= 1
     end
 
-    animatestars()
+    if mode == "wavetext" then
+        animatestars(2)
+    else
+        animatestars()
+    end
 
     -- checks for wave finished
     if mode == "game" and #enemies == 0 then
@@ -219,7 +223,7 @@ function update_game()
 end
 
 function update_start()
-    animatestars()
+    animatestars(0.5)
     if btn(4) == false and btn(5) == false then
         buttonreleased = true
     end
