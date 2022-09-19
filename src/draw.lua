@@ -156,12 +156,15 @@ function draw_start()
     cls(0)
     starfield()
     print(version, 1, 1, 1)
-    cprint("my awesome shmup", 64, 40, 12)
+
+    spr(212, 17, 30, 12, 2)
+    cprint("short shwave shmup", 64, 45, 6)
+
     if highscore > 0 then
-        cprint("highscore: ", 64, 56, 12)
-        cprint(makescore(highscore), 64, 64, 12)
+        cprint("highscore: ", 64, 63, 12)
+        cprint(makescore(highscore), 64, 69, 12)
     end
-    cprint("press either z or x key to start", 64, 80, blink())
+    cprint("press either z or x key to start", 64, 90, blink())
 end
 
 function draw_over()
