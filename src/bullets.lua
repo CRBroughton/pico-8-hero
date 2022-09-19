@@ -22,10 +22,12 @@ function fire(enemy, angle, speed)
 
     if enemy.boss != true then
         enemy.flash = 4
+        sfx(29)
+    else
+        sfx(34)
     end
 
     add(enemybullets, bullet)
-    sfx(29)
     return bullet
 end
 

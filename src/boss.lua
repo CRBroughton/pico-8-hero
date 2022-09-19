@@ -10,6 +10,13 @@ function boss1(enemy)
         enemy.sx = speed
     end
     -- shooting
+    -- gaps
+    if gametime % 30 > 3 then
+        if gametime % 3 == 0 then 
+            fire(enemy, 0, 2)
+        end
+    end
+    
 
     -- transition
     debug = "boss1"
