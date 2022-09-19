@@ -30,7 +30,7 @@ end
 
 function boss2(enemy)
     -- movement
-    local speed = 2
+    local speed = 1.5
     if enemy.subphase == 1 then
         enemy.sx =- speed
         if enemy.x <= 4 then
@@ -62,6 +62,10 @@ function boss2(enemy)
         end
     end
     -- shooting
+
+    if gametime % 15 == 0 then
+        aimfire(enemy, speed)
+    end
     debug = "boss2"
     move(enemy)
 end
