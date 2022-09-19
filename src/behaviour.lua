@@ -5,8 +5,15 @@ function performenemymission(enemy)
     end
     if enemy.mission == "flyin" then
         -- fly into the scene
-        enemy.x += (enemy.posx - enemy.x) / 7
-        enemy.y += (enemy.posy - enemy.y) / 7
+
+        local directionx = (enemy.posx - enemy.x) / 7
+        local directiony = (enemy.posy - enemy.y) / 7
+
+        if enemy.boss then
+            directiony = min(directiony, 1)
+        end
+        enemy.x += directionx
+        enemy.y += directiony
 
         if abs(enemy.y - enemy.posy) < 0.7 then
             enemy.y = enemy.posy

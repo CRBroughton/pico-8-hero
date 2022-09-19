@@ -78,8 +78,8 @@ function spawnwave()
         -- boss
         attackfreq = 60
         placeenemies({
+            { 0, 0, 0, 0, 5, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
         })  
@@ -154,6 +154,21 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
         enemy.height = 2
         enemy.collisionwidth = 16
         enemy.collisionheight = 16
+    elseif enemytype == 5 then
+        -- boss
+        enemy.hp = 20
+        enemy.sprite = 68
+        enemy.animation = {68, 72, 76, 72}
+        enemy.width = 4
+        enemy.height = 3
+        enemy.collisionwidth = 32
+        enemy.collisionheight = 24
+
+        enemy.x = 48
+        enemy.y = -24
+        enemy.posx = 48
+        enemy.posy = 25
+        enemy.boss = true
     end
 
     add(enemies, enemy)
