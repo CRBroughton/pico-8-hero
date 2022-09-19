@@ -16,7 +16,11 @@ function fire(enemy, angle, speed)
     bullet.collisionwidth = 2
     bullet.collisionheight = 2
     bullet.bulletmode = true
-    enemy.flash = 4
+
+    if enemy.boss != true then
+        enemy.flash = 4
+    end
+    
     add(enemybullets, bullet)
     sfx(29)
     return bullet

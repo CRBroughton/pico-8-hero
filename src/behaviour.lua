@@ -30,6 +30,9 @@ function performenemymission(enemy)
 
     elseif enemy.mission == "boss1" then
         -- boss mission 1
+        if gametime % 15 == 0 then
+            fire(enemy, 0, 2)
+        end
     elseif enemy.mission == "boss2" then
         -- boss mission 2
     elseif enemy.mission == "boss3" then
