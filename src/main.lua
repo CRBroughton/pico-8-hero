@@ -1,13 +1,15 @@
 function _init()
     -- Clears the screen
     cls(0)
+    -- save data
+    cartdata("heroshmup")
+    highscore = dget(0)
     -- state machine for game mode
     mode = "start"
     startscreen()
     blinkt = 1
     gametime = 0
     shake = 0
-    highscore = 0
 end
 
 function _draw()

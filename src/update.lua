@@ -244,6 +244,7 @@ function update_over()
         if btnp(4) or btnp(5) then
             if score > highscore then
                 highscore = score
+                dset(0, score)
             end
             startscreen()
             buttonreleased = false
@@ -263,6 +264,7 @@ function update_win()
         if btnp(4) or btnp(5) then
             if score > highscore then
                 highscore = score
+                dset(0, score)
             end
             startscreen()
             buttonreleased = false
