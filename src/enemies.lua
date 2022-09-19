@@ -156,7 +156,7 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
         enemy.collisionheight = 16
     elseif enemytype == 5 then
         -- boss
-        enemy.hp = 1
+        enemy.hp = 130
         enemy.sprite = 68
         enemy.animation = {68, 72, 76, 72}
         enemy.width = 4

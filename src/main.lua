@@ -7,7 +7,6 @@ function _init()
     blinkt = 1
     gametime = 0
     shake = 0
-    debug = "chicken"
 end
 
 function _draw()
@@ -23,8 +22,6 @@ function _draw()
     elseif mode == "win" then
         draw_win()
     end
-
-    print(debug, 2, 9, 7)
 end
 
 function _update()
