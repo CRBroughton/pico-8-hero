@@ -18,10 +18,24 @@ function performenemymission(enemy)
         if abs(enemy.y - enemy.posy) < 0.7 then
             enemy.y = enemy.posy
             enemy.x = enemy.posx
-            enemy.mission = "protect"
+
+            if enemy.boss then
+                enemy.mission = "boss1"
+            else
+                enemy.mission = "protect"
+            end
         end
     elseif enemy.mission == "protect" then
         -- stay up
+
+    elseif enemy.mission == "boss1" then
+        -- boss mission 1
+    elseif enemy.mission == "boss2" then
+        -- boss mission 2
+    elseif enemy.mission == "boss3" then
+        -- boss mission 3
+    elseif enemy.mission == "boss4" then
+        -- boss mission 4
     elseif enemy.mission == "attack" then
         -- attack the player
         if enemy.type == 1 then
