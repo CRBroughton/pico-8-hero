@@ -125,7 +125,7 @@ function draw_game()
     end
 
     -- draws the scoreboard
-    print("score: " .. score, 40, 1, 12)
+    print("score: " .. makescore(score), 40, 2, 12)
 
     -- draws the health hearts
     for i = 1, ship.max_lives do
@@ -140,28 +140,64 @@ function draw_game()
     print(cherries, 118, 1, 14)
 end
 
+function makescore(val)
+    if val == 0 then
+        return "0"
+    end
+    return val .. "00"
+end
+
 function draw_start()
     cls(1)
     cprint("my awesome shmup", 64, 40, 12)
+    if highscore > 0 then
+        cprint("highscore: ", 64, 56, 12)
+        cprint(makescore(highscore), 64, 64, 12)
+    end
     cprint("press either z or x key to start", 64, 80, blink())
 end
 
 function draw_over()
     draw_game()
-    cprint("game over", 64, 40, 2)
-    cprint("press either z or x key", 64, 80, blink())
-    cprint("to continue", 64, 90, 7)
+    cprint("game over", 64, 40, 8)
+    cprint("score: " .. makescore(score), 64, 56, 12)
 
+    if score > highscore then
+        cprint("new highscore!: " .. makescore(score), 64, 64, 10)
+    end
+
+    local counter = 7
+
+    if gametime % 4 < 2 then
+        counter = 10
+    end
+
+    cprint("press either z or x key", 64, 80, counter)
+    cprint("to continue", 64, 90, counter)
 end
 
 function draw_wavetext()
     draw_game()
-    cprint("wave " .. wave, 64, 40, blink())
+    if wave == lastwave then
+        cprint("final wave!", 64, 40, blink())
+    else
+        cprint("wave " .. wave .. " of " .. lastwave, 64, 40, blink())
+    end
 end
 
 function draw_win()
     draw_game()
-    cprint("congratulations", 64, 40, 2)
-    cprint("press either z or x key", 64, 80, blink())
-    cprint("to continue", 64, 90, 7)
+    cprint("congratulations", 64, 40, 8)
+    if score > highscore then
+        cprint("new highscore!: " .. makescore(score), 64, 64, 10)
+    end
+
+    local counter = 7
+
+    if gametime % 4 < 2 then
+        counter = 10
+    end
+
+    cprint("press either z or x key", 64, 80, counter)
+    cprint("to continue", 64, 90, counter)
 end

@@ -157,15 +157,17 @@ function boss5(enemy)
         sfx(2)
         shake = 2
     end
-    if enemy.phasebegin + 2 * 30 < gametime then
-        if gametime % 5 == 0 then
+    if enemy.phasebegin + 3 * 30 < gametime then
+        if gametime % 4 == 2 then
             createparticle(enemy.x + rnd(32), enemy.y + rnd(24))
             sfx(2)
             shake = 2
         end
     end
     -- transition
-    if enemy.phasebegin + 4 * 30 < gametime then
+    if enemy.phasebegin + 6 * 30 < gametime then
+        score += 100
+        popfloat(makescore(100), enemy.x + 16, enemy.y + 6)
         createbigparticle(enemy.x + 16, enemy.y + 12)
         shake = 15
         enemies = {}

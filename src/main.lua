@@ -7,6 +7,7 @@ function _init()
     blinkt = 1
     gametime = 0
     shake = 0
+    highscore = 0
 end
 
 function _draw()
@@ -67,6 +68,7 @@ function startgame()
     cherries = 0
 
     attackfreq = 60
+    firefreq = 20
     nextfire = 0
 
     stars = {}

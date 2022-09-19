@@ -6,6 +6,7 @@ function spawnwave()
     end
     if wave == 1 then
         attackfreq = 60
+        firefreq = 20
         -- space invaders
         placeenemies({
             { 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
@@ -16,6 +17,7 @@ function spawnwave()
     elseif wave == 2 then
         -- red tutorial
         attackfreq = 60
+        firefreq = 20
         placeenemies({
             { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
             { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
@@ -24,7 +26,8 @@ function spawnwave()
         })
     elseif wave == 3 then
         -- wall of red
-        attackfreq = 60
+        attackfreq = 50
+        firefreq = 20
         placeenemies({
             { 1, 1, 2, 2, 1, 1, 2, 2, 1, 1 },
             { 1, 1, 2, 2, 2, 2, 2, 2, 1, 1 },
@@ -33,7 +36,8 @@ function spawnwave()
         })
     elseif wave == 4 then
         -- spin tutorial
-        attackfreq = 60
+        attackfreq = 50
+        firefreq = 15
         placeenemies({
             { 3, 3, 0, 1, 1, 1, 1, 0, 3, 3 },
             { 3, 3, 0, 1, 1, 1, 1, 0, 3, 3 },
@@ -42,7 +46,8 @@ function spawnwave()
         })
     elseif wave == 5 then
         -- chess
-        attackfreq = 60
+        attackfreq = 50
+        firefreq = 15
         placeenemies({
             { 3, 1, 3, 1, 2, 2, 1, 3, 1, 3 },
             { 1, 3, 1, 2, 1, 1, 3, 1, 3, 1 },
@@ -51,16 +56,18 @@ function spawnwave()
         })
     elseif wave == 6 then
         -- yellow
-        attackfreq = 60
+        attackfreq = 40
+        firefreq = 10
         placeenemies({
-            { 1, 1, 1, 0, 4, 0, 0, 1, 1, 1 },
-            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
+            { 2, 2, 2, 0, 4, 0, 0, 2, 2, 2 },
+            { 2, 2, 0, 0, 0, 0, 0, 0, 2, 2 },
             { 1, 1, 0, 1, 1, 1, 1, 0, 1, 1 },
             { 1, 1, 0, 1, 1, 1, 1, 0, 1, 1 },
         })
     elseif wave == 7 then
         -- double yellow
-        attackfreq = 60
+        attackfreq = 40
+        firefreq = 10
         placeenemies({
             { 3, 3, 0, 1, 1, 1, 1, 0, 3, 3 },
             { 4, 0, 0, 2, 2, 2, 2, 0, 4, 0 },
@@ -70,17 +77,16 @@ function spawnwave()
         })
     elseif wave == 8 then
         -- hell
-        attackfreq = 60
+        attackfreq = 30
+        firefreq = 10
         placeenemies({
             { 0, 0, 1, 1, 1, 1, 1, 1, 0, 0 },
             { 3, 3, 1, 1, 1, 1, 1, 1, 3, 3 },
             { 3, 3, 2, 2, 2, 2, 2, 2, 3, 3 },
             { 3, 3, 2, 2, 2, 2, 2, 2, 3, 3 }
- 
         })
     elseif wave == 9 then
         -- boss
-        attackfreq = 60
         placeenemies({
             { 0, 0, 0, 0, 5, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -139,16 +145,19 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
         enemy.sprite = 21
         enemy.hp = 3
         enemy.animation = {21, 22, 23, 24}
+        enemy.score = 1
     elseif enemytype == 2 then
         -- red enemy
         enemy.sprite = 148
         enemy.hp = 2
         enemy.animation = {148, 149}
+        enemy.score = 2
     elseif enemytype == 3 then
         -- spinning enemy
         enemy.sprite = 184
         enemy.hp = 4
         enemy.animation = {184, 185, 186, 187}
+        enemy.score = 3
     elseif enemytype == 4 then
         -- yellow
         enemy.sprite = 208
@@ -158,9 +167,10 @@ function spawnenemy(enemytype, enemyx, enemyy, enemywait)
         enemy.height = 2
         enemy.collisionwidth = 16
         enemy.collisionheight = 16
+        enemy.score = 5
     elseif enemytype == 5 then
         -- boss
-        enemy.hp = 130
+        enemy.hp = 1
         enemy.sprite = 68
         enemy.animation = {68, 72, 76, 72}
         enemy.width = 4

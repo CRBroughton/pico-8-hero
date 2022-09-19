@@ -24,7 +24,7 @@ function update_game()
 
     if btnp(4) then
         if cherries > 0 then
-            cherrybomb(cherries)
+            cherrybomb()
             cherries = 0
         else
             sfx(32)
@@ -95,6 +95,19 @@ function update_game()
                 if enemy.hp <= 0 then
                     killed(enemy)
 
+                end
+            end
+        end
+    end
+
+    -- cherry collision with bullets
+    for bullet in all(bullets) do
+        if bullet.sprite == 17 then
+            for enemybullet in all(enemybullets) do
+                if iscolliding(enemybullet, bullet) then
+                    del(enemybullets, enemybullet)
+                    score += 5
+                    small_wave(enemybullet.x, enemybullet.y, 8)
                 end
             end
         end
@@ -198,6 +211,7 @@ function update_game()
 
     -- checks for wave finished
     if mode == "game" and #enemies == 0 then
+        enemybullets = {}
         nextwave()
     end
 end
@@ -228,6 +242,9 @@ function update_over()
     end
     if buttonreleased then
         if btnp(4) or btnp(5) then
+            if score > highscore then
+                highscore = score
+            end
             startscreen()
             buttonreleased = false
         end
@@ -244,6 +261,9 @@ function update_win()
     end
     if buttonreleased then
         if btnp(4) or btnp(5) then
+            if score > highscore then
+                highscore = score
+            end
             startscreen()
             buttonreleased = false
         end

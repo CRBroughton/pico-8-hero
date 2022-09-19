@@ -48,7 +48,7 @@ function aimfire(enemy, speed)
     bullet.sx = sin(angle) * speed
 end
 
-function cherrybomb(cherries)
+function cherrybomb()
     local spacing = 0.25 / (cherries * 2)
     for i = 1, cherries * 2 do
         local angle = 0.375 + spacing * i
