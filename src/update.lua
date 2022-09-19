@@ -85,7 +85,11 @@ function update_game()
                 small_spark(enemy.x + 4, enemy.y + 4)
                 enemy.hp -= bullet.dmg
                 sfx(3)
-                enemy.flash = 2
+                if enemy.boss then
+                    enemy.flash = 5
+                else
+                    enemy.flash = 2
+                end
                 if enemy.hp <= 0 then
                     killed(enemy)
 
