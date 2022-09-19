@@ -155,6 +155,7 @@ end
 function draw_start()
     cls(0)
     starfield()
+    print(version, 1, 1, 1)
     cprint("my awesome shmup", 64, 40, 12)
     if highscore > 0 then
         cprint("highscore: ", 64, 56, 12)

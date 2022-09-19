@@ -10,6 +10,7 @@ function _init()
     blinkt = 1
     gametime = 0
     shake = 0
+    version = "v1"
 end
 
 function _draw()
