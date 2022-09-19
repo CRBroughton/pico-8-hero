@@ -48,6 +48,10 @@ function draw_game()
     -- draw enemies
     for enemy in all(enemies) do
         if enemy.flash > 0 then
+            if gametime % 4 < 2 then
+                pal(3, 8)
+                pal(11, 14)
+            end
             enemy.flash -= 1
             if enemy.boss then
                 enemy.sprite = 64
